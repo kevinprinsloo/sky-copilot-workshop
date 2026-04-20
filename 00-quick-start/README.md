@@ -111,42 +111,47 @@ That's the setup complete. In Chapter 01 you'll load the dataset and start explo
 
 ---
 
-## Optional — Install the Copilot CLI
+## Optional — Copilot in the Terminal (GitHub CLI)
 
-The Copilot CLI brings AI assistance to your terminal. It's entirely optional for this workshop, but useful if you're comfortable with the command line.
+GitHub Copilot is available in your terminal via the **GitHub CLI** (`gh`). It's entirely optional for this workshop, but useful if you're comfortable with the command line.
 
-### Install
+> ⚠️ **Corporate/organisation users:**  Sky and Comcast Copilot policy may block CLI access even if VS Code Chat works fine. If you see an `Access denied by policy settings` error, skip this section and use the VS Code Chat panel instead — it is not affected by this restriction.
+
+### Install the GitHub CLI
 
 ```bash
-# macOS/Linux with Homebrew:
-brew install copilot-cli
-
-# All platforms with npm (requires Node.js):
-npm install -g @github/copilot
-
-# macOS/Linux with install script:
-curl -fsSL https://gh.io/copilot-install | bash
+# macOS with Homebrew:
+brew install gh
 
 # Windows with WinGet:
-winget install GitHub.Copilot
+winget install GitHub.cli
 ```
 
 ### Sign in
 
 ```bash
-copilot
-> /login
+gh auth login
 ```
 
-Follow the device code flow (same as VS Code — browser opens, enter the code, authorise).
+Follow the device code flow — a browser opens, enter the code, and authorise.
 
-### Verify
+### Install the Copilot extension for gh
 
 ```bash
-copilot
-> Say hello and tell me what you can help with
-> /exit
+gh extension install github/gh-copilot
 ```
+
+### Use it
+
+```bash
+# Ask Copilot a question or request a shell command:
+gh copilot -p "list all Python files modified in the last 7 days"
+
+# Use a tool like shell(git) for git-aware prompts:
+gh copilot -p "Summarize this week's commits" --allow-tool 'shell(git)'
+```
+
+> 💡 **Inside VS Code**, you don't need the CLI at all — use `Cmd+I` in the terminal panel for inline suggestions, or the `@terminal` agent in the Chat panel.
 
 ---
 
@@ -172,7 +177,7 @@ Press `Cmd+Option+I` (Mac) or `Ctrl+Alt+I` (Windows). If it still doesn't appear
 
 ## 🔑 Key Takeaways
 
-1. **Two interfaces, same AI** — VS Code Chat UI and the Copilot CLI both talk to the same model. Use whichever feels most natural.
+1. **Multiple interfaces, same AI** — VS Code Chat, inline suggestions, and `gh copilot` in the terminal all talk to the same model. Use whichever feels most natural.
 2. **One-time sign-in** — your login persists across sessions
 3. **The notebook is the sample project** — `samples/air-bnb-workshop.ipynb` is what you'll work with throughout the entire workshop
 
