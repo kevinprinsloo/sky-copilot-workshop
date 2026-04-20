@@ -4,7 +4,7 @@
 
 > **Learn how GitHub Copilot can help you do more advanced analytical work without needing deep software engineering skills.**
 
-This hands-on workshop is designed for **finance and analytics teams** who work with data every day. You'll work with a real dataset throughout all chapters, using Copilot to explore, clean, analyse, and explain data — all from VS Code.
+This hands-on workshop is designed for **finance and analytics teams** who work with data every day. You'll work with a real dataset throughout all chapters, using Copilot to explore, clean, analyse, and ex plain data — all from VS Code.
 
 ---
 
