@@ -1,3 +1,5 @@
+![Data Analysis with GitHub Copilot — Sky Workshop](./images/Picture%201.png)
+
 # Glossary
 
 Quick reference for terms used throughout this workshop. You don't need to memorise these — refer back as needed.

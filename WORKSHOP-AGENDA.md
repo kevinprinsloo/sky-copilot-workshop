@@ -1,3 +1,5 @@
+![Data Analysis with GitHub Copilot — Sky Workshop](./images/Picture%201.png)
+
 # Workshop Agenda — Data Analysis with GitHub Copilot (20 minutes)
 
 > **For participants and facilitators.** This page is the shortest path through the workshop. Follow the steps below in order. Everything else in the chapter folders is available as self-study material after the session.
