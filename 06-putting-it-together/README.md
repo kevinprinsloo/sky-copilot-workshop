@@ -4,7 +4,7 @@
 
 > **Use everything you've learned to build a complete, reusable analysis pipeline — from data loading to exported report — entirely through Copilot prompts.**
 
-This chapter is a capstone. There's less instruction and more doing. You'll combine custom instructions, the DuckDB skill, the data-analyst agent, and Agent mode to build something you could actually hand to a colleague.
+This chapter is a capstone. There's less instruction and more doing. You'll combine custom instructions and Agent mode to build something you could actually hand to a colleague.
 
 > ⚠️ **Prerequisites:** Complete Chapters 01–05.
 
@@ -56,14 +56,6 @@ Agent mode will:
 
 Review each file it creates before accepting.
 
-**🖥️ Copilot CLI equivalent:**
-```bash
-copilot
-> /plan Create a city_report.py script that loads Airbnb data, cleans it, produces a DuckDB summary table, a plotly chart saved as HTML, and exports to CSV
-# Review the plan
-# Accept → Copilot implements step by step
-```
-
 ---
 
 ## Part 2 — Add the Neighbourhood Report
@@ -74,13 +66,13 @@ Now extend the script. With Agent mode still active:
 
 ---
 
-## Part 3 — Use the Data-Analyst Agent for the Narrative
+## Part 3 — Write the Narrative
 
-Switch to the **data-analyst agent** (select from the Agent mode dropdown, or `copilot --agent data-analyst` in the CLI):
+Switch to **Chat mode** (switch the dropdown back from Agent to Ask/Chat) and paste your results:
 
 > *"I've run city_report.py and got these results: [paste your summary table output]. Write a short management commentary — 4 bullet points — that a Head of Analytics could include in a monthly market update. Highlight the most interesting findings and flag anything that needs explanation."*
 
-This is the combination that matters: Agent mode built the code; the data-analyst agent writes the business narrative.
+This is the combination that matters: Agent mode built the code; Chat mode writes the business narrative.
 
 ---
 
@@ -123,25 +115,6 @@ This is worth discussing as a group. Which features felt most immediately useful
 
 ---
 
-## Bonus: The Copilot CLI Workflow
-
-If you're comfortable in the terminal, try reproducing Part 1 entirely in the CLI:
-
-```bash
-# 1. Use the data-analyst agent
-copilot --agent data-analyst
-
-# 2. Plan first
-> /plan Create city_report.py: loads Airbnb data, cleans, DuckDB summary, plotly chart, CSV export
-
-# 3. Review the plan, then proceed
-# 4. Let Copilot implement step by step
-# 5. Review diffs with /diff before finalising
-> /diff
-```
-
-The CLI `/plan` → implement → `/diff` → review workflow is particularly good for larger scripts where you want to see the whole approach before any code is written.
-
 ---
 
 ## 📝 Final Assignment
@@ -159,11 +132,11 @@ This is the closest this workshop gets to "real work." The goal is to end with s
 
 ## 🔑 Final Key Takeaways
 
-1. **Instructions + skills + agents stack together** — each layer adds specificity without slowing you down
+1. **Instructions + Agent mode together** — the instructions file sets the standards; Agent mode does the building. Both active at the same time.
 2. **Agent mode is for building; Chat mode is for asking** — use the right one for the task
 3. **Describe the goal, not the steps** — the best Copilot prompts say what you want the output to be, not how to produce it
 4. **Review everything** — Copilot is fast and usually right, but you are the analyst. The numbers need to be correct.
-5. **The real value is the workflow** — not any single prompt, but the combination of instructions + skills + agent that means you never have to explain the same thing twice
+5. **The real value is the workflow** — not any single prompt, but consistent instructions that mean you never have to explain the same thing twice
 
 ---
 
@@ -171,10 +144,10 @@ This is the closest this workshop gets to "real work." The goal is to end with s
 
 | Topic | Resource |
 |---|---|
-| Full Copilot CLI course | [github/copilot-cli-for-beginners](https://github.com/github/copilot-cli-for-beginners) |
-| Community skills and agents | [github/awesome-copilot](https://github.com/github/awesome-copilot) |
-| Official documentation | [docs.github.com/copilot](https://docs.github.com/copilot) |
-| MCP servers (connect to external APIs) | [Chapter 06 of the CLI course](https://github.com/github/copilot-cli-for-beginners/tree/main/06-mcp-servers) |
+| Official Copilot documentation | [docs.github.com/copilot](https://docs.github.com/copilot) |
+| Copilot in VS Code — full guide | [VS Code Copilot docs](https://code.visualstudio.com/docs/copilot/overview) |
+| Custom instructions for Copilot | [docs.github.com — custom instructions](https://docs.github.com/en/copilot/customizing-copilot/adding-custom-instructions-for-github-copilot) |
+| Community examples | [github/awesome-copilot](https://github.com/github/awesome-copilot) |
 
 ---
 

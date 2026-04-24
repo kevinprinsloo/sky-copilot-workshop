@@ -1,12 +1,12 @@
 ![Data Analysis with GitHub Copilot — Sky Workshop](../images/Picture%201.png)
 
-# Chapter 05 — Custom Instructions & Agents 🤖
+# Chapter 05 — Custom Instructions & Agent Mode 🤖
 
-> **What if you could hire a specialist — a data analyst who already knows your tools, your data schema, and your team's standards — and have them available in every Copilot session?**
+> **What if Copilot already knew your tools, your data schema, and your team's conventions — before you even typed a word?**
 
-So far, Copilot has been answering your questions one at a time. In this chapter, you'll learn how to give Copilot persistent context: project-level instructions it reads automatically, skills it applies without being asked, and specialist agents tailored to your workflow.
+So far, Copilot has been answering your questions one at a time. In this chapter, you'll learn how to give Copilot **persistent context** — project-level instructions it reads automatically — and how to use **Agent mode** in VS Code to let Copilot take multi-step actions across files.
 
-By the end you'll understand exactly why Copilot knew to write DuckDB syntax in Chapter 04 without you asking — and how to set the same thing up for your own team's data and tools.
+By the end you'll understand exactly why Copilot knew to write DuckDB syntax in Chapter 04 without you asking — and how to set the same thing up for your own team.
 
 > ⚠️ **Prerequisites:** Complete Chapters 01–04.
 
@@ -14,13 +14,12 @@ By the end you'll understand exactly why Copilot knew to write DuckDB syntax in 
 
 By the end of this chapter you'll be able to:
 
-- Understand the three layers of Copilot context: instructions, skills, agents
-- Read and modify the project instruction files for this workshop
-- Create your own skill that auto-triggers for a specific task
-- Use the data-analyst agent included in this workshop
-- Know when to use instructions vs skills vs agents
+- Understand what `.github/copilot-instructions.md` does and how to edit it
+- Give Copilot consistent context that applies across the whole team
+- Use Agent mode in VS Code Chat to make changes across files
+- Know when to use Chat mode vs Agent mode
 
-> ⏱️ **Estimated time:** ~50 minutes (20 min reading + 30 min hands-on)
+> ⏱️ **Estimated time:** ~30 minutes (10 min reading + 20 min hands-on)
 
 ---
 
@@ -34,322 +33,167 @@ Imagine briefing a new hire before their first day. You tell them:
 
 After that briefing, they don't need reminding every time. They just work to your standards automatically.
 
-That's exactly what instruction files, skills, and agents do for Copilot.
-
-| Tool | Analogy | When It Applies |
-|---|---|---|
-| **Instructions** (`AGENTS.md`, `copilot-instructions.md`) | The onboarding document | Every session, automatically |
-| **Skills** (`SKILL.md`) | A specialist checklist | When your prompt matches the skill's description |
-| **Agents** (`.agent.md`) | A named specialist colleague | When you explicitly call them |
+That's exactly what the custom instructions file does for Copilot.
 
 ---
 
-## Layer 1 — Project Instructions
+## Layer 1 — Project Instructions (`.github/copilot-instructions.md`)
 
-### What are they?
+### What is it?
 
-Instruction files are plain markdown documents that Copilot reads automatically whenever you open the project. They're committed to the repository, so every team member gets the same Copilot behaviour.
+`.github/copilot-instructions.md` is a plain markdown file that GitHub Copilot reads automatically whenever you work in a VS Code project that contains it. It's committed to the repository, so every team member gets the same Copilot behaviour.
 
-This workshop includes two:
-
-| File | Scope | Purpose |
-|---|---|---|
-| `AGENTS.md` (project root) | Cross-platform standard | Works with Copilot and other AI tools |
-| `.github/copilot-instructions.md` | GitHub Copilot specific | More detailed, project-specific rules |
+> **This is the only file Copilot reads automatically in VS Code.** Other files in this project (like the `SKILL.md` and `AGENTS.md` files) are useful reference documents, but they don't auto-load in VS Code — you reference them manually with `#filename` in Chat.
 
 ### Read the workshop instructions
 
+In the Chat panel, try:
+
 **💬 VS Code Chat UI:**
 
-> *"#AGENTS.md — read this file and summarise in 3 bullets what Copilot should know about this project."*
-
-**🖥️ Copilot CLI:**
-```bash
-copilot
-> @AGENTS.md Read this and summarise what Copilot should know about this project in 3 bullets.
-```
+> *"#copilot-instructions.md — read this file and summarise in 3 bullets what Copilot should know about this project."*
 
 ### Why DuckDB worked in Chapter 04
 
-Look at `AGENTS.md` — the SQL section says:
+Open `.github/copilot-instructions.md` in VS Code and look at the SQL section:
 
 ```markdown
-## SQL — always use DuckDB
-- Always write SQL using DuckDB syntax
-- DataFrames are queried directly by variable name
-- Always chain `.df()` at the end
+## SQL queries — always use DuckDB
+
+- Always write SQL using DuckDB syntax, not SQLite, PostgreSQL, or any other dialect.
+- DuckDB can query pandas DataFrames directly by variable name — no loading step needed:
+  duckdb.query("SELECT * FROM df WHERE city = 'London'").df()
 ```
 
-That's why every SQL query Copilot suggested used `duckdb.query(...).df()` — without you asking. The instruction file sets the default.
+That's why every SQL query Copilot suggested used `duckdb.query(...).df()` without you asking. The instructions file sets the default for the whole project.
 
-### Exercise: See the before/after
+### What else is in it?
 
-To see what Copilot does *without* instructions, open a new VS Code window, open a blank folder (no `AGENTS.md`), and ask:
+The file in this project covers:
+- **Project context** — what the data is, what the DataFrame is called
+- **SQL rules** — always use DuckDB, always chain `.df()`
+- **Data schema** — every column name and what it means
+- **Python conventions** — which libraries to use, type hints, docstrings
+- **Charting conventions** — figure sizes, titles, formatting
 
-> 💬 *"Write a SQL query to count listings per city in a pandas DataFrame called df."*
+### Write your own instructions
 
-You'll probably get generic SQL or pandas code. Back in the workshop folder, the same prompt produces DuckDB. Same model, different project context.
-
-### Generate instructions with `/init`
-
-If you're setting up a new project, the Copilot CLI can generate instruction files automatically:
-
-```bash
-# In your project folder:
-copilot
-> /init
-```
-
-Copilot scans your codebase and generates a starter `AGENTS.md`. You then edit it to add your team's specifics.
-
----
-
-## Layer 2 — Skills
-
-### What are they?
-
-Skills are task-specific instructions stored in a `SKILL.md` file. Copilot loads them **automatically** when your prompt matches the skill's description. No slash command, no `/agent` — just ask naturally.
-
-This workshop includes a DuckDB skill at `.github/skills/duckdb-query/SKILL.md`.
-
-### Read the DuckDB skill
-
-**💬 VS Code Chat UI:**
-
-> *"#.github/skills/duckdb-query/SKILL.md — read this skill file and explain what it does and when Copilot will automatically use it."*
-
-### Skill vs instruction file: what's the difference?
-
-| Instruction file | Skill |
-|---|---|
-| Always active | Active only when prompt matches |
-| General project context | Specific task instructions |
-| "Always use DuckDB" | "When writing a DuckDB query, follow these exact steps and format" |
-| Like team rules | Like a specialist checklist |
-
-### Create your own skill
-
-Skills live in `.github/skills/<skill-name>/SKILL.md`. Here's the format:
-
-```markdown
----
-name: your-skill-name
-description: What the skill does — include trigger words that match how you'd naturally ask for it
----
-
-# Skill title
-
-Instructions for how Copilot should behave when this skill is active.
-```
-
-**Exercise: Create a data-summary skill**
+To adapt this for your own team's project, edit the file or ask Copilot to help:
 
 **💬 VS Code Chat UI — Agent mode:**
 
-> *"Create a new skill file at .github/skills/data-summary/SKILL.md. The skill should trigger when I ask for a summary of the dataset or analysis findings. It should instruct Copilot to: always write summaries in bullet points, always include the city name when referring to a city, always round numbers to one decimal place, and write as if for a senior finance manager."*
+> *"Update .github/copilot-instructions.md to add a section about our team's SQL conventions: we use Snowflake SQL dialect, our main table is called `transactions`, and all monetary amounts should be formatted to 2 decimal places."*
 
-Accept the file Agent mode creates. Then test it:
-
-> 💬 *"Give me a summary of what we've found about the Airbnb dataset so far."*
-
-**🖥️ CLI approach:**
-```bash
-mkdir -p .github/skills/data-summary
-
-cat > .github/skills/data-summary/SKILL.md << 'EOF'
----
-name: data-summary
-description: Use when summarising dataset findings, writing analysis summaries, or producing reports for non-technical stakeholders
----
-
-# Data Summary Writer
-
-When writing summaries of analysis findings:
-
-- Use bullet points, not paragraphs
-- Always name the city when referring to a city-level finding
-- Round all numbers to one decimal place
-- Write for a senior finance manager — no jargon, just clear insight
-- End with one "so what?" — what should the reader do with this information?
-EOF
-
-copilot
-> /skills reload
-> Give me a summary of what we know about the Airbnb dataset
-```
-
-### Manage skills
-
-**🖥️ CLI:**
-```bash
-copilot
-> /skills list          # See all available skills
-> /skills info duckdb-query   # Details about a specific skill
-> /skills reload        # Reload after editing a SKILL.md
-```
-
-**💬 VS Code Chat UI:**
-Skills load automatically — there's no manual management in the UI. To see what skills are loaded, ask:
-
-> 💬 *"What skills do you have available? List them."*
+Review what Agent mode proposes, then accept or adjust.
 
 ---
 
-## Layer 3 — Agents
+## Layer 2 — Agent Mode in VS Code
 
-### What are they?
+### What is it?
 
-Agents are named specialists you call on explicitly. Unlike skills (which auto-trigger), you invoke an agent deliberately. The agent brings a specific persona, expertise, and set of standards.
+Agent mode is the built-in Copilot mode in VS Code where Copilot doesn't just answer questions — it takes actions. It can:
+- Read and edit files
+- Create new files
+- Run terminal commands
+- Chain multiple steps together
 
-This workshop includes a **data-analyst agent** at `.github/agents/data-analyst.agent.md`.
+Switch to it by clicking the dropdown at the top of the Chat panel → **Agent**.
 
-### The specialist vs generic difference
+### Chat mode vs Agent mode
 
-This is the same pattern as the original Copilot CLI course — worth seeing firsthand.
+| | Chat mode | Agent mode |
+|---|---|---|
+| **What it does** | Answers questions, suggests code | Takes actions — reads, edits, creates files |
+| **You paste the code** | Yes | No — it writes to the file directly |
+| **Best for** | Getting suggestions, understanding concepts | Building something, making multi-file edits |
+| **Review process** | Read the suggestion, copy what you need | Review each proposed change before accepting |
 
-**Without the agent:**
+### Demo: Use Agent mode to add a notebook cell
 
-> 💬 *"Write a function that takes a city name and returns a summary of the Airbnb listings for that city."*
-
-You'll get a working function — probably with no type hints, no docstring, and aimed at a developer audience.
-
-**With the data-analyst agent:**
-
-**💬 VS Code Chat UI:**
-
-Switch the dropdown at the top of Chat from **Ask** → **Agent**, then select **data-analyst** from the agent list.
-
-> *"Write a function that takes a city name and returns a summary of the Airbnb listings for that city."*
-
-**What's different:** The function now includes type hints, a docstring written in plain English for a non-developer, and the output is formatted as a clean dictionary rather than raw values. The agent applies those standards automatically.
-
-**🖥️ CLI:**
-```bash
-copilot --agent data-analyst
-> Write a function that takes a city name and returns a summary of the Airbnb listings for that city.
-```
-
-### Read the data-analyst agent
-
-**💬 VS Code Chat UI:**
-
-> *"#.github/agents/data-analyst.agent.md — read this agent file. What are the three most important things it instructs Copilot to do?"*
-
-### Create your own agent
-
-```markdown
----
-name: your-agent-name
-description: What this agent is for — used to find the agent in the list
-tools: ["read", "edit", "search"]
----
-
-# Agent Name
-
-You are a [role] specialising in [domain].
-
-## Your approach
-[How the agent should behave]
-
-## Standards
-[Specific rules to follow]
-```
-
-**Exercise: Create a "report-writer" agent**
+Switch to Agent mode (dropdown → **Agent**) and try:
 
 **💬 VS Code Chat UI — Agent mode:**
 
-> *"Create an agent file at .github/agents/report-writer.agent.md. This agent is a business report writer who specialises in translating data analysis into clear, concise management reports. It should: write in plain English, use bullet points for key findings, include a 'so what?' recommendation, avoid technical jargon, and structure every response with: Summary, Key Findings, and Recommendation sections."*
+> *"In the notebook samples/air-bnb-workshop.ipynb, add a new cell after the existing data overview section. The cell should use DuckDB to produce a summary table: for each city, show the number of listings with valid prices, the number without, and the percentage with. Format the result clearly."*
 
-Then switch to the report-writer agent and try:
+**What happens:** Agent mode reads the notebook, identifies the right location, and proposes adding the cell. You review the change and accept it.
 
-> *"Based on our Airbnb analysis, write a short report on pricing differences between cities. Keep it to half a page."*
+> 💡 **Always review before accepting.** Agent mode is usually right, but you're the analyst — you make the call on what goes into the notebook.
+
+### Demo: Use Agent mode to create a file
+
+**💬 VS Code Chat UI — Agent mode:**
+
+> *"Create a new Python script at samples/quick_summary.py. The script should: import the same data as the notebook (use the same download URLs), use DuckDB to calculate median price and average reviews by city, and print the results as a formatted table. Add a docstring explaining what the script does."*
+
+Agent mode will propose the file. Review it, then accept.
 
 ---
 
-## How They Work Together
+## Layer 3 — The `AGENTS.md` and `SKILL.md` files (reference documents)
 
-Skills and agents combine naturally:
+This project also includes `AGENTS.md` (project root) and `.github/skills/duckdb-query/SKILL.md`. These are well-written reference documents that describe project conventions in a structured format.
 
-| Scenario | What to use |
-|---|---|
-| Every SQL query should use DuckDB | Instruction file (`AGENTS.md`) |
-| When writing a SQL query, follow these exact formatting steps | Skill (`duckdb-query`) |
-| I want a specialist who always gives business-ready output | Agent (`data-analyst`) |
-| I want a specialist who also always follows the SQL skill | Agent + skill together — they stack |
+**In VS Code**, these files do not auto-load — Copilot does not read them automatically. But you can use them manually:
 
-```bash
-# CLI: agent + skill work together automatically
-copilot --agent data-analyst
-> Write a SQL query to find the top 5 cities by average listing price
-# data-analyst agent applies its tone standards
-# duckdb-query skill applies DuckDB syntax rules
-# Both active at the same time
-```
+- Drag them into Chat, or type `#AGENTS.md` to give Copilot their content as context
+- They're useful as structured briefing documents you can reference any time
+
+**Example:**
+
+> *"#AGENTS.md — I'm going to write some analysis code. Apply the Python and SQL conventions from this file."*
+
+> **Note on the wider GitHub ecosystem:** In the GitHub Copilot CLI (not available at Sky), `SKILL.md` files can trigger automatically when your prompt matches. On GitHub.com, `.agent.md` files define named coding agents. These features are not available in VS Code Copilot at Sky — but if access is granted in future, this project is already set up to use them.
 
 ---
 
 ## ▶️ Your Turn
 
-### Exercise 1 — Compare with and without instructions
+### Exercise 1 — See the before/after
 
-1. Ask in this project: *"Write a function to calculate the median price per room type."*
-2. Note what Copilot produces — type hints, docstring, which library it uses
-3. Open a blank VS Code folder with no `AGENTS.md` and ask the same question
-4. Compare the two outputs
+To see what Copilot does *without* instructions, open a new VS Code window, open a blank folder with no `.github/copilot-instructions.md`, and ask:
 
-### Exercise 2 — Write a skill for your team
+> 💬 *"Write a SQL query to count listings per city in a pandas DataFrame called df."*
 
-Think about a task your team does repeatedly — a report format, a data quality check, a standard output structure. Write a `SKILL.md` for it.
+You'll probably get generic SQL or pandas code. Back in the workshop folder, the same prompt produces DuckDB. Same model, different project context.
 
-Minimum requirements:
-- A `name` and `description` that include natural trigger words
-- At least 5 specific instructions
-- A clear output format section
+### Exercise 2 — Add your team's conventions
 
-Test it with a natural prompt — don't use the skill name, just describe what you want.
+Edit `.github/copilot-instructions.md` and add a short section for a convention from your own work. For example:
 
-### Exercise 3 — Use the data-analyst agent end-to-end
+- A SQL dialect your team uses
+- A specific table or column naming pattern
+- A formatting preference for reports
 
-Switch to the data-analyst agent, then complete this workflow in a single conversation:
+Then test it — ask Copilot a question that should trigger your new convention.
 
-1. Ask it to write a DuckDB query for top neighbourhoods by reviews
-2. Ask it to explain the output in plain English
-3. Ask it to write a 3-bullet summary suitable for a management slide
+### Exercise 3 — Use Agent mode end-to-end
 
-Notice how the agent maintains a consistent tone across all three steps.
+Switch to Agent mode, then complete this workflow in a single conversation:
 
----
+1. Ask it to write a DuckDB query for top neighbourhoods by reviews and put it in a new notebook cell
+2. Ask it to add a seaborn chart cell below that visualises the result
+3. Ask it to write a two-sentence interpretation of the chart as a markdown cell
 
-## 📝 Assignment
-
-Build a mini instruction setup for a hypothetical analytics project at your own team:
-
-1. Write an `AGENTS.md` for a project you work on (or could work on). Include: project context, the database/SQL dialect you use, key table/column names, output style preferences.
-2. Create one skill file for a task you repeat regularly.
-3. Test both by asking Copilot the same question with and without the files.
-4. Write two sentences explaining what you'd change in the current workshop's `AGENTS.md` to better reflect your team's workflow.
+Notice how Agent mode maintains context across all three steps and works in the right locations in the file.
 
 ---
 
 <details>
 <summary>🔧 Troubleshooting</summary>
 
-**"Copilot isn't following the instructions"**
-Instruction files are loaded at session start. Close and re-open VS Code (or restart the CLI) after adding a new file.
+**"Copilot isn't following the instructions in copilot-instructions.md"**
+Instruction files are loaded at session start. Close and re-open VS Code (or restart the Chat session) after adding or editing the file.
 
-**"My skill isn't auto-triggering"**
-The `description` field is the trigger mechanism — it needs to include words that match how you naturally ask. Add more synonyms: "SQL queries, data aggregation, GROUP BY, summarising data" is better than just "SQL".
+**"Agent mode isn't appearing in the dropdown"**
+Make sure the GitHub Copilot Chat extension is up to date. In VS Code, go to Extensions → find GitHub Copilot Chat → check for updates.
 
-**"Agent not showing in the dropdown"**
-Agent files must have `.agent.md` extension and be in `.github/agents/`. The `description` field in frontmatter is required.
+**"Agent mode proposed a change I didn't want"**
+Click **Discard** (not Accept). Agent mode always shows you what it's going to do before making changes. You're always in control.
 
-**"CLI: agent not found"**
-```bash
-copilot
-> /agent   # Lists all available agents
-```
-Check the file is in `.github/agents/` with `.agent.md` extension.
+**"The notebook didn't update when Agent mode said it would"**
+Make sure the notebook is open in VS Code. Agent mode needs the file open and the kernel connected. Try running at least one cell first.
 
 </details>
 
@@ -357,11 +201,11 @@ Check the file is in `.github/agents/` with `.agent.md` extension.
 
 ## 🔑 Key Takeaways
 
-1. **Instructions = always-on context** — `AGENTS.md` and `copilot-instructions.md` are read every session. Use them for project-wide rules.
-2. **Skills = auto-triggered checklists** — `SKILL.md` files load when your prompt matches. The description field is what triggers them.
-3. **Agents = named specialists** — `.agent.md` files give Copilot a specific persona and standards for a domain.
-4. **They stack** — instructions + skill + agent all apply together. Each layer adds specificity.
-5. **Share via git** — commit these files and the whole team gets the same Copilot behaviour.
+1. **`.github/copilot-instructions.md` = always-on context** — this is the file Copilot reads automatically in VS Code. Use it for project-wide rules: SQL dialect, schema, coding conventions.
+2. **Commit it to git** — everyone on the team gets the same Copilot behaviour
+3. **Agent mode is for building; Chat mode is for asking** — use Agent mode when you want Copilot to make changes; use Chat mode when you want to understand or get suggestions
+4. **Always review Agent mode changes** — Copilot is fast and usually correct, but you're the analyst. The output needs to be right.
+5. **The other files (`AGENTS.md`, `SKILL.md`) are reference documents** — useful for context via `#file`, but not auto-loaded in VS Code
 
 ---
 
@@ -371,7 +215,7 @@ In **[Chapter 06: Putting It All Together](../06-putting-it-together/README.md)*
 
 - Build a complete analysis pipeline using everything from this workshop
 - Use Agent mode to scaffold a reusable Python script
-- Create a skills-first workflow your team could actually adopt
+- Practice the full workflow from data loading to stakeholder output
 
 ---
 

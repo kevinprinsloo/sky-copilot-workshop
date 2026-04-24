@@ -103,19 +103,38 @@ If you see a response, you're ready. Move on to Chapter 01!
 
 ---
 
+## Step 7 — Try inline completions
+
+Before moving on, try the other main way Copilot helps: **inline suggestions as you type**.
+
+Open a **new cell** in the notebook. Type this comment and then pause for a second:
+
+```python
+# Count the number of listings per city, ordered by count descending
+```
+
+Copilot should show a grey suggestion. Press **Tab** to accept it. If you want to see a different option, press **Alt+]** (Windows) or **Option+]** (Mac). Press **Escape** to dismiss without accepting.
+
+> 💡 Comments are prompts. The more specific your comment, the better the suggestion.
+
+---
+
 ## ✅ You're Ready!
 
 That's the setup complete. In Chapter 01 you'll load the dataset and start exploring it — with Copilot's help at every step.
 
-**[Continue to Chapter 01: Understanding Your Data →](../01-understanding-data/README.md)**
+**[Continue to the 20-minute agenda →](../WORKSHOP-AGENDA.md)** | **[Or start at Chapter 01 →](../01-understanding-data/README.md)**
 
 ---
 
-## Optional — Copilot in the Terminal (GitHub CLI)
+## ❌ Copilot CLI — not available at Sky
 
-GitHub Copilot is available in your terminal via the **GitHub CLI** (`gh`). It's entirely optional for this workshop, but useful if you're comfortable with the command line.
+> **GitHub Copilot CLI (`gh copilot`) is currently in public preview and is blocked by Sky's GitHub Enterprise policy.** Do not follow any "Copilot CLI" steps during this workshop. Use the VS Code Chat panel instead — it has the same capabilities and is fully available in our environment.
 
-> ⚠️ **Corporate/organisation users:**  Sky and Comcast Copilot policy may block CLI access even if VS Code Chat works fine. If you see an `Access denied by policy settings` error, skip this section and use the VS Code Chat panel instead — it is not affected by this restriction.
+The CLI instructions below are kept here for reference in case access is granted in future.
+
+<details>
+<summary>CLI instructions (future reference only)</summary>
 
 ### Install the GitHub CLI
 
@@ -144,14 +163,10 @@ gh extension install github/gh-copilot
 ### Use it
 
 ```bash
-# Ask Copilot a question or request a shell command:
 gh copilot -p "list all Python files modified in the last 7 days"
-
-# Use a tool like shell(git) for git-aware prompts:
-gh copilot -p "Summarize this week's commits" --allow-tool 'shell(git)'
 ```
 
-> 💡 **Inside VS Code**, you don't need the CLI at all — use `Cmd+I` in the terminal panel for inline suggestions, or the `@terminal` agent in the Chat panel.
+</details>
 
 ---
 
@@ -177,7 +192,7 @@ Press `Cmd+Option+I` (Mac) or `Ctrl+Alt+I` (Windows). If it still doesn't appear
 
 ## 🔑 Key Takeaways
 
-1. **Multiple interfaces, same AI** — VS Code Chat, inline suggestions, and `gh copilot` in the terminal all talk to the same model. Use whichever feels most natural.
+1. **Two ways in VS Code** — the Chat panel (sidebar) for questions and instructions, and inline suggestions (Tab to accept) as you type. Both are always on.
 2. **One-time sign-in** — your login persists across sessions
 3. **The notebook is the sample project** — `samples/air-bnb-workshop.ipynb` is what you'll work with throughout the entire workshop
 

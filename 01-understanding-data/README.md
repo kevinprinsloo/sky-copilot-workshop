@@ -8,6 +8,8 @@ The first step in any analysis is understanding what you're working with: how ma
 
 > ⚠️ **Prerequisites:** Complete [Chapter 00](../00-quick-start/README.md) first. Have `samples/air-bnb-workshop.ipynb` open in VS Code.
 
+> ❌ **Sky environment note:** This chapter includes optional "Copilot CLI" examples. **Ignore those sections** — the CLI is not available in our GitHub Enterprise environment. All core exercises use VS Code Chat only.
+
 ## 🎯 Learning Objectives
 
 By the end of this chapter you'll be able to:

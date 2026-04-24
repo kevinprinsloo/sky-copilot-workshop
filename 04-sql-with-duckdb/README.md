@@ -51,13 +51,15 @@ That's it. No connection string. No importing data. No teardown. Run it in a not
 
 ---
 
-## The DuckDB Skill
+## Why Copilot writes DuckDB automatically
 
-Before we start writing queries, there's something to note. This project includes a **skill file** at `.github/skills/duckdb-query/SKILL.md`.
+Before we start writing queries, there's something to note. This project includes a **custom instructions file** at `.github/copilot-instructions.md`.
 
-This skill tells Copilot — automatically — to use DuckDB syntax whenever you ask for a SQL query. You don't have to say "use DuckDB" in every prompt. Copilot reads the skill and applies it.
+That file tells Copilot to use DuckDB syntax for all SQL queries in this project. You don't have to say "use DuckDB" in every prompt — Copilot reads the instructions file and applies the rule automatically.
 
-We cover exactly how skills work in [Chapter 05](../05-custom-instructions-agents/README.md). For now, just know that this is why Copilot knows to write `duckdb.query(...)` instead of generic SQL.
+We cover exactly how this works in [Chapter 05](../05-custom-instructions-agents/README.md). For now, just know that this is why Copilot knows to write `duckdb.query(...)` instead of generic SQL.
+
+> **Note:** There is also a `.github/skills/duckdb-query/SKILL.md` file in this project. In VS Code, this file is not read automatically by Copilot — it's a reference document you can drag into Chat with `#` to give extra context. The file that Copilot reads automatically is `.github/copilot-instructions.md`.
 
 ---
 
@@ -78,12 +80,6 @@ Or ask in Chat:
 **💬 VS Code Chat UI:**
 
 > *"Write a DuckDB query to count the number of listings per city, ordered from largest to smallest."*
-
-**🖥️ Copilot CLI:**
-```bash
-copilot
-> Write a DuckDB query to count the number of listings per city, ordered from largest to smallest. The DataFrame is called `df`.
-```
 
 ---
 
@@ -272,7 +268,7 @@ Ask Copilot: *"How do I save this DuckDB result to a CSV file?"*
 ## 🔑 Key Takeaways
 
 1. **DuckDB = SQL on DataFrames** — query your pandas variables directly, no database needed
-2. **The skill file does the work** — `.github/skills/duckdb-query/SKILL.md` means Copilot automatically writes DuckDB syntax without you having to ask
+2. **The instructions file does the work** — `.github/copilot-instructions.md` tells Copilot to use DuckDB syntax automatically — no need to say "use DuckDB" in every prompt
 3. **Describe in English, run in SQL** — window functions, CTEs, ranked results — all from a plain-English prompt
 4. **Translate both ways** — pandas → SQL for analysts who prefer SQL; SQL → pandas for the reverse
 

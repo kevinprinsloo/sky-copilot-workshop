@@ -4,7 +4,37 @@
 
 > **Learn how GitHub Copilot can help you do more advanced analytical work without needing deep software engineering skills.**
 
-This hands-on workshop is designed for **finance and analytics teams** who work with data every day. You'll work with a real dataset throughout all chapters, using Copilot to explore, clean, analyse, and ex plain data — all from VS Code.
+This hands-on workshop is designed for **finance and analytics teams** who work with data every day. You'll work with a real dataset throughout all chapters, using Copilot to explore, clean, analyse, and explain data — all from VS Code.
+
+---
+
+## ⚡ 20-Minute Workshop Path
+
+**Start here if you're in the live session.** The full agenda with copy-paste prompts is in:
+
+> **[WORKSHOP-AGENDA.md](./WORKSHOP-AGENDA.md) — the 20-minute session guide**
+
+The chapter folders below contain the full reference material for self-study after the session.
+
+---
+
+## 🚦 Sky environment — what's available
+
+This workshop uses **GitHub Copilot in VS Code only**. Some features described in GitHub Copilot documentation are not yet available in our GitHub Enterprise environment:
+
+| Feature | Available at Sky |
+|---|---|
+| Copilot Chat in VS Code | ✅ |
+| Inline completions (Tab to accept) | ✅ |
+| Inline editing (`Cmd+I` on selected code) | ✅ |
+| Right-click → Copilot: Explain / Fix | ✅ |
+| `#file` context in Chat | ✅ |
+| Agent mode in VS Code Chat | ✅ |
+| `.github/copilot-instructions.md` | ✅ |
+| GitHub Copilot CLI (`gh copilot`) | ❌ Currently in public preview — blocked by Sky GitHub Enterprise policy |
+| MCP servers | ❌ Not available in our environment |
+
+> Any "Copilot CLI" sections in the chapter READMEs are marked optional and can be skipped entirely.
 
 ---
 
@@ -17,7 +47,7 @@ This hands-on workshop is designed for **finance and analytics teams** who work 
 | 02 | 🧹 [Cleaning & Preparing](./02-cleaning-preparing/README.md) | Spot and fix data quality issues faster |
 | 03 | 📊 [Explore & Visualise](./03-explore-visualise/README.md) | Generate charts from plain-English descriptions |
 | 04 | 🗄️ [SQL with DuckDB](./04-sql-with-duckdb/README.md) | Run SQL directly on your data — no database needed |
-| 05 | 🤖 [Custom Instructions & Agents](./05-custom-instructions-agents/README.md) | Teach Copilot your tools, data, and team standards |
+| 05 | 🤖 [Custom Instructions](./05-custom-instructions-agents/README.md) | Teach Copilot your tools, data, and team standards |
 | 06 | 🎯 [Putting It All Together](./06-putting-it-together/README.md) | Build a reusable analysis pipeline end-to-end |
 
 ---
@@ -33,22 +63,6 @@ Each chapter follows the same pattern:
 5. **What's Next** — preview of the next chapter
 
 **All prompts are ready to copy.** Every Copilot prompt in this workshop can be pasted directly into the Chat panel.
-
----
-
-## 🤖 Two Ways to Use Copilot
-
-Every exercise in this workshop can be done in two ways. You'll see both options throughout:
-
-| | VS Code Chat UI | Copilot CLI |
-|---|---|---|
-| **How to open** | `Cmd+Option+I` / `Ctrl+Alt+I` | `copilot` in terminal |
-| **Best for** | Most participants — visual, approachable | Power users comfortable with the terminal |
-| **References files with** | `#file` or drag-and-drop | `@path/to/file` |
-| **Planning** | Agent mode → describe the task | `/plan` command |
-| **Great for** | Chat, explain, generate, edit | Automation, batch tasks, scripting |
-
-> 💡 **Not sure which to use?** Start with the VS Code Chat UI. It's more visual, easier to navigate, and works the same way. The CLI gives you more power once you're comfortable.
 
 ---
 
@@ -72,26 +86,11 @@ The data lives in `samples/air-bnb-workshop.ipynb`. You'll load and work with it
 | **Python 3.10+** | [Download](https://www.python.org/downloads/) |
 | **Jupyter extension** in VS Code | Install from the Extensions panel |
 
-> 💡 **No terminal experience needed.** All core exercises use the VS Code Chat panel. The Copilot CLI is covered as an optional extension for those who want it.
+> 💡 **No terminal experience needed.** All core exercises use the VS Code Chat panel.
 
 ---
 
-## 🤖 Understanding the GitHub Copilot Family
-
-GitHub Copilot has grown into a family of tools. Here's where each one lives — and which ones we use in this workshop:
-
-| Product | Where It Runs | Used in This Workshop? |
-|---|---|---|
-| **GitHub Copilot in VS Code** | VS Code sidebar & inline | ✅ Primary tool |
-| **GitHub Copilot CLI** | Terminal | ✅ Optional extension |
-| **Copilot on GitHub.com** | github.com | Referenced |
-| **GitHub Copilot cloud agent** | GitHub issues/PRs | Referenced |
-
----
-
-## 📋 Quick Reference
-
-### VS Code Chat UI
+## 📋 Quick Reference — VS Code Chat UI
 
 | Action | How |
 |---|---|
@@ -99,18 +98,8 @@ GitHub Copilot has grown into a family of tools. Here's where each one lives —
 | Reference a file | Type `#` then the filename, or drag the file into chat |
 | Switch to Agent mode | Click the dropdown at the top of Chat → **Agent** |
 | Explain selected code | Select code → right-click → **Copilot: Explain** |
-| Inline suggestion | Start typing — Copilot autocompletes |
-
-### Copilot CLI (optional)
-
-| Action | Command |
-|---|---|
-| Start interactive session | `copilot` |
-| One-shot question | `copilot -p "your question"` |
-| Plan a task | `/plan describe the task` |
-| List skills | `/skills list` |
-| List agents | `/agent` |
-| Exit | `/exit` |
+| Edit selected code | Select code → `Cmd+I` (Mac) / `Ctrl+I` (Windows) |
+| Inline suggestion | Start typing or write a comment — Copilot autocompletes; **Tab** to accept, **Escape** to reject, **Alt+]** to cycle |
 
 ---
 

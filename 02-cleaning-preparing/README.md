@@ -8,6 +8,8 @@ Before you can trust any analysis, you need to know your data is clean. Missing 
 
 > ⚠️ **Prerequisites:** Complete [Chapter 01](../01-understanding-data/README.md).
 
+> ❌ **Sky environment note:** This chapter includes optional "Copilot CLI" examples. **Ignore those sections** — the CLI is not available in our GitHub Enterprise environment. All core exercises use VS Code Chat only.
+
 ## 🎯 Learning Objectives
 
 By the end of this chapter you'll be able to:

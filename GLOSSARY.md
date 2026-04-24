@@ -1,163 +1,107 @@
 # Glossary
 
-Quick reference for technical terms used throughout this course. Don't worry about memorizing these now - refer back as needed.
+Quick reference for terms used throughout this workshop. You don't need to memorise these — refer back as needed.
 
 ---
 
 ## A
 
-### Agent
+### Agent mode
+A mode in the GitHub Copilot Chat panel (VS Code) where Copilot takes actions — reading and editing files, creating new files, running code — rather than just answering questions. Switch to it via the dropdown at the top of the Chat panel. Always review its proposed changes before accepting.
 
-A specialized AI personality with domain expertise (e.g., frontend, security). Defined in `.agent.md` files with YAML frontmatter containing at minimum a `description` field.
-
-### API
-
-Application Programming Interface. A way for programs to communicate with each other.
+### AGENTS.md
+A markdown file in the project root that gives AI tools context about the project: what the data contains, which tools to use, coding conventions, and so on. GitHub Copilot in VS Code does not read this file automatically — it is used as a reference document you can share with Copilot via `#AGENTS.md` in Chat. (Some other AI tools, including Cursor and the GitHub Copilot CLI, do read it automatically.)
 
 ---
 
 ## C
 
-### CI/CD
+### Chat mode
+The default mode in the GitHub Copilot Chat panel. Copilot answers your questions and suggests code, but does not make changes to files itself. You copy the suggestion and paste it where you need it.
 
-Continuous Integration/Continuous Deployment. Automated testing and deployment pipelines.
+### Context
+The information Copilot has available when generating a response — your message, any files you've referenced with `#`, the custom instructions file, and the current file you're editing. More context generally means better responses.
 
-### CLI
+### copilot-instructions.md
+The file at `.github/copilot-instructions.md` that GitHub Copilot reads automatically in VS Code. Use it to set project-wide conventions: SQL dialect, schema, coding standards, tone. Committed to git so the whole team gets the same behaviour.
 
-Command Line Interface. A text-based way to interact with software (like this tool!).
+### CTE (Common Table Expression)
+A SQL construct that lets you define a named temporary result set within a query using `WITH`. CTEs make complex queries more readable by breaking them into named steps. DuckDB supports them fully. Example: `WITH city_avg AS (SELECT city, AVG(price) FROM df GROUP BY city) SELECT * FROM city_avg WHERE avg > 100`.
 
-### Context Window
+---
 
-The amount of text an AI can consider at once. Like a desk that can only hold so much. When you add files, conversation history, and system prompts, they all take up space in this window.
+## D
 
-### Context Manager
+### DataFrame
+A table-like data structure in Python (from the pandas library), with rows and columns. Similar to a spreadsheet or a SQL result set. In this workshop the main DataFrame is called `df`.
 
-A Python construct using the `with` statement that automatically handles setup and cleanup (like opening and closing files). Example: `with open("file.txt") as f:` ensures the file is closed even if an error occurs.
-
-### Conventional Commit
-
-A commit message format that follows a standardized structure: `type(scope): description`. Common types include `feat` (new feature), `fix` (bug fix), `docs` (documentation), `refactor`, and `test`. Example: `feat(auth): add password reset flow`.
-
-### Dataclass
-
-A Python decorator (`@dataclass`) that automatically generates `__init__`, `__repr__`, and other methods for classes that primarily store data. Used in the book app to define the `Book` class with fields like `title`, `author`, `year`, and `read`.
+### DuckDB
+An in-process SQL database engine that can query pandas DataFrames directly — no database server, no connection string. You write a SQL query, DuckDB reads from the live Python variable, and returns a new DataFrame. Syntax: `duckdb.query("SELECT ... FROM df").df()`.
 
 ---
 
 ## F
 
-### Frontmatter
-
-Metadata at the top of a Markdown file enclosed in `---` delimiters. Used in agent and skill files to define properties like `description` and `name` in YAML format.
+### `#file` (in Chat)
+A way to give Copilot access to a specific file's content within a Chat message. Type `#` followed by the filename, or drag the file into the Chat panel. Copilot can then answer questions based on the actual content.
 
 ---
 
-## G
+## I
 
-### Glob Pattern
+### Inline suggestion
+Code that Copilot suggests as you type in the editor — shown in grey. Press **Tab** to accept, **Escape** to reject, **Alt+]** (Windows) or **Option+]** (Mac) to cycle through alternatives.
 
-A pattern using wildcards to match file paths (e.g., `*.py` matches all Python files, `*.js` matches all JavaScript files).
+### Inline edit
+A targeted edit mode triggered by selecting code and pressing `Cmd+I` (Mac) / `Ctrl+I` (Windows). Copilot applies a change to just the selected code. Different from Chat (which explains and suggests) and Agent mode (which acts across files).
 
 ---
 
 ## J
 
-### JWT
-
-JSON Web Token. A secure way to transmit authentication information between systems.
-
----
-
-## M
-
-### MCP
-
-Model Context Protocol. A standard for connecting AI assistants to external data sources.
+### Jupyter Notebook
+A file format (`.ipynb`) that mixes code cells, text, and outputs in a single document. Common in data analysis. In VS Code, install the Jupyter extension to open and run notebooks.
 
 ---
 
-## N
+## K
 
-### npx
-
-A Node.js tool that runs npm packages without installing them globally. Used in MCP server configurations to launch servers (e.g., `npx @modelcontextprotocol/server-filesystem`).
-
----
-
-## O
-
-### OWASP
-
-Open Web Application Security Project. An organization that publishes security best practices and maintains the "OWASP Top 10" list of most critical web application security risks.
+### Kernel
+The Python process that runs the code in a Jupyter notebook. When VS Code asks you to "select a kernel", choose your Python 3.10+ installation. The kernel needs to be running for cells to execute.
 
 ---
 
 ## P
 
-### PEP 8
+### pandas
+The main Python library for working with tabular data. Provides the DataFrame structure. In this workshop, pandas is used to load data and do basic cleaning. SQL queries are done with DuckDB.
 
-Python Enhancement Proposal 8. The official style guide for Python code, covering naming conventions (snake_case for functions, PascalCase for classes), indentation (4 spaces), and code layout. Following PEP 8 makes Python code consistent and readable.
-
-### Pre-commit Hook
-
-A script that runs automatically before each `git commit`. Can be used to run Copilot security reviews or code quality checks before code is committed.
-
-### pytest
-
-A popular Python testing framework known for its simple syntax, powerful fixtures, and rich plugin ecosystem. Used throughout this course for testing the book app. Tests are run with `python -m pytest tests/`.
-
-### Programmatic Mode
-
-Running Copilot with `-p` flag for single commands without interaction.
-
----
-
-## R
-
-### Rate Limiting
-
-Restrictions on how many requests you can make to an API within a time period. Copilot may temporarily limit responses if you exceed your plan's usage quota.
+### Prompt
+What you type into the Copilot Chat panel. A good prompt gives context (what data you're working with, what the column names are), describes what you want clearly, and specifies the format if it matters.
 
 ---
 
 ## S
 
-### Session
+### seaborn
+A Python plotting library built on top of matplotlib. Good for statistical charts — bar charts, box plots, KDE plots, heatmaps. In this workshop we use it for static charts, and plotly for interactive ones.
 
-A conversation with Copilot that maintains context and can be resumed later.
-
-### Skill
-
-A folder with instructions that Copilot automatically loads when relevant to your prompt. Defined in `SKILL.md` files with YAML frontmatter.
-
-### Slash Command
-
-Commands starting with `/` that control Copilot (e.g., `/help`, `/clear`, `/model`).
+### SKILL.md
+A structured markdown document that describes a task-specific set of instructions. In this project, `.github/skills/duckdb-query/SKILL.md` contains DuckDB conventions. In VS Code, this file is not read automatically — reference it manually with `#.github/skills/duckdb-query/SKILL.md` in Chat. (In the GitHub Copilot CLI, SKILL.md files do load automatically when your prompt matches — but the CLI is not available at Sky.)
 
 ---
 
 ## T
 
 ### Token
+A unit of text that AI models process — roughly 4 characters or 0.75 words. Large files, long conversations, and many `#file` references all use tokens. If Copilot seems to be ignoring earlier context, the conversation may be near its token limit. Start a new Chat session.
 
-A unit of text that AI models process. Roughly 4 characters or 0.75 words. Used to measure both input (your prompts and context) and output (AI responses).
-
-### Type Hints
-
-Python annotations that indicate the expected types of function parameters and return values (e.g., `def add_book(title: str, year: int) -> Book:`). They don't enforce types at runtime but help with code clarity, IDE support, and static analysis tools like mypy.
+### Type hints
+Python annotations that describe what types a function expects and returns. Example: `def get_summary(city: str) -> dict:`. They don't affect how the code runs, but make it easier to read and let tools flag mistakes. The `AGENTS.md` in this project asks Copilot to always add type hints.
 
 ---
 
 ## W
 
-### WCAG
-
-Web Content Accessibility Guidelines. Standards published by W3C for making web content accessible to people with disabilities. WCAG 2.1 AA is a common compliance target.
-
----
-
-## Y
-
-### YAML
-
-YAML Ain't Markup Language. A human-readable data format used for configuration. In this course, YAML appears in agent and skill frontmatter (the `---` delimited block at the top of `.agent.md` and `SKILL.md` files).
+### Window function
+A SQL function that calculates a value across a set of rows related to the current row, without collapsing the result into a group. Useful for ranking, running totals, and comparisons within a group. Example: `RANK() OVER (PARTITION BY city ORDER BY price DESC)`. DuckDB supports window functions fully.
