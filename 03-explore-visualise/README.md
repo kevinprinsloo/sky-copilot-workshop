@@ -1,10 +1,10 @@
-![Data Analysis with GitHub Copilot — Sky Workshop](../images/Picture%201.png)
+![Data Analysis with GitHub Copilot - Sky Workshop](../images/Picture%201.png)
 
-# Chapter 03 — Explore & Visualise 📊
+# Chapter 03 - Explore & Visualise 📊
 
 > **Describe the chart you want in plain English. Copilot writes the code.**
 
-For analysts who aren't Python experts, charting code is often the biggest barrier. Syntax for colours, axes, legends, layouts — it takes experience to remember all of it. Copilot removes that barrier entirely. You describe what you want to see; it writes the code.
+For analysts who aren't Python experts, charting code is often the biggest barrier. Syntax for colours, axes, legends, layouts - it takes experience to remember all of it. Copilot removes that barrier entirely. You describe what you want to see; it writes the code.
 
 > ⚠️ **Prerequisites:** Complete [Chapter 02](../02-cleaning-preparing/README.md).
 
@@ -23,7 +23,7 @@ By the end of this chapter you'll be able to:
 
 ## 🧩 Real-World Analogy: Briefing a Designer
 
-When you brief a designer, you describe the output you want — not the tool settings to produce it. "I want a bar chart showing revenue by region, sorted largest to smallest, with the company colours" — the designer handles the rest.
+When you brief a designer, you describe the output you want - not the tool settings to produce it. "I want a bar chart showing revenue by region, sorted largest to smallest, with the company colours" - the designer handles the rest.
 
 That's exactly how this works. You describe the chart; Copilot handles the `figsize`, `palette`, `tight_layout`, and axis formatting.
 
@@ -41,7 +41,7 @@ In a new notebook cell, open Chat and paste:
 
 Run the generated code. Then ask Copilot to improve it:
 
-> *"Make the labels on the y-axis easier to read — increase font size and truncate any neighbourhood names longer than 25 characters."*
+> *"Make the labels on the y-axis easier to read - increase font size and truncate any neighbourhood names longer than 25 characters."*
 
 **The takeaway:** You iterate in plain English. No Stack Overflow, no documentation hunting.
 
@@ -71,23 +71,23 @@ After running a chart cell, ask:
 
 > *"I've just generated a violin plot showing price distribution by city. The London distribution has a very long upper tail and a wide body, while Amsterdam's is narrower and more concentrated. What does this tell us about these two markets from a business perspective?"*
 
-**The takeaway:** This is the "so what?" layer — translating a visual into insight. It's exactly the kind of commentary that goes in a management report.
+**The takeaway:** This is the "so what?" layer - translating a visual into insight. It's exactly the kind of commentary that goes in a management report.
 
 ---
 
 ## ▶️ Your Turn
 
-### Exercise 1 — Availability patterns
+### Exercise 1 - Availability patterns
 
 > 💬 *"Create a KDE (kernel density) plot showing the distribution of availability_365 for each city on the same axes. Add a legend, title, and label the x-axis as 'Days available per year'. Which city appears to have the most restricted supply?"*
 
-### Exercise 2 — Improve a chart
+### Exercise 2 - Improve a chart
 
 Take one of the charts from the notebook that already exists. Paste the code into Chat and ask:
 
 > 💬 *"Improve this chart for a management presentation: make the font sizes larger, remove the top and right spines, add gridlines on the x-axis only, and make the title bold."*
 
-### Exercise 3 — Correlation heatmap
+### Exercise 3 - Correlation heatmap
 
 > 💬 *"Create a correlation heatmap for the numeric columns in our dataset: price, number_of_reviews, reviews_per_month, availability_365, calculated_host_listings_count. Only show the lower triangle. Use a red-blue diverging colour scheme centred at zero."*
 
@@ -99,7 +99,7 @@ Then ask:
 
 ## 📝 Assignment
 
-Choose a question you'd genuinely want a chart to answer about this dataset — something a business stakeholder might ask. Then:
+Choose a question you'd genuinely want a chart to answer about this dataset - something a business stakeholder might ask. Then:
 
 1. Write a Copilot prompt that describes the chart
 2. Run it and review it
@@ -112,10 +112,10 @@ Choose a question you'd genuinely want a chart to answer about this dataset — 
 
 ## 🔑 Key Takeaways
 
-1. **Describe, don't code** — tell Copilot what you want to see, not how to draw it
-2. **Iterate** — ask for improvements in plain English. "Make the labels bigger", "use a different colour", "add gridlines"
-3. **Ask for the interpretation** — the chart is the output; the insight is the point. Ask Copilot "what does this tell us?"
-4. **Interactive charts are one prompt away** — Plotly interactivity from a single description
+1. **Describe, don't code** - tell Copilot what you want to see, not how to draw it
+2. **Iterate** - ask for improvements in plain English. "Make the labels bigger", "use a different colour", "add gridlines"
+3. **Ask for the interpretation** - the chart is the output; the insight is the point. Ask Copilot "what does this tell us?"
+4. **Interactive charts are one prompt away** - Plotly interactivity from a single description
 
 ---
 

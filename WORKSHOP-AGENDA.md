@@ -1,14 +1,14 @@
-![Data Analysis with GitHub Copilot — Sky Workshop](./images/Picture%201.png)
+![Data Analysis with GitHub Copilot - Sky Workshop](./images/Picture%201.png)
 
-# Workshop Agenda — Data Analysis with GitHub Copilot (20 minutes)
+# Workshop Agenda - Data Analysis with GitHub Copilot (20 minutes)
 
 > **For participants and facilitators.** This page is the shortest path through the workshop. Follow the steps below in order. Everything else in the chapter folders is available as self-study material after the session.
 
 ---
 
-## Before the session — do this in advance (5–10 min)
+## Before the session - do this in advance (5–10 min)
 
-Complete [Chapter 00 — Quick Start](./00-quick-start/README.md) before the session starts:
+Complete [Chapter 00 - Quick Start](./00-quick-start/README.md) before the session starts:
 
 1. Install VS Code
 2. Install the **GitHub Copilot** and **Jupyter** extensions
@@ -18,13 +18,13 @@ Complete [Chapter 00 — Quick Start](./00-quick-start/README.md) before the ses
 6. Run the first cell (installs packages) and the second cell (loads data)
 7. Open Copilot Chat (`Cmd+Option+I` on Mac / `Ctrl+Alt+I` on Windows) and send any message to confirm it responds
 
-If any of those steps fail, raise it at the start of the session — don't wait.
+If any of those steps fail, raise it at the start of the session - don't wait.
 
 ---
 
 ## Session (20 minutes)
 
-### ① Chat basics — 5 minutes
+### ① Chat basics - 5 minutes
 
 **What:** Ask Copilot questions. Give it context. Use `#file` to point it at your notebook.
 
@@ -39,7 +39,7 @@ represents and which ones would be most useful for understanding listing popular
 Then drag the notebook file `samples/air-bnb-workshop.ipynb` into the Chat panel (or type `#air-bnb-workshop`) and ask:
 
 ```
-#air-bnb-workshop.ipynb — look at the data loading section. What would happen if the
+#air-bnb-workshop.ipynb - look at the data loading section. What would happen if the
 download for one city fails?
 ```
 
@@ -49,11 +49,11 @@ Then select any code cell in the notebook → right-click → **Copilot: Explain
 
 ---
 
-### ② Inline completions — 3 minutes
+### ② Inline completions - 3 minutes
 
 **What:** Copilot suggests code as you type. Tab to accept, Escape to reject.
 
-Open a **new notebook cell** and type this comment — then pause:
+Open a **new notebook cell** and type this comment - then pause:
 
 ```python
 # Count the number of listings per city, ordered by count descending
@@ -73,7 +73,7 @@ Pause again. If you see a grey suggestion, Tab accepts. **Alt+]** (Mac: **Option
 
 ---
 
-### ③ SQL with DuckDB — 5 minutes
+### ③ SQL with DuckDB - 5 minutes
 
 **What:** Run SQL directly on your pandas DataFrame. No database server. No connection string.
 
@@ -104,7 +104,7 @@ What does this tell us? Are there any patterns worth calling out for a business 
 
 ---
 
-### ④ Charts from plain English — 4 minutes
+### ④ Charts from plain English - 4 minutes
 
 **What:** Describe a chart, get the code, iterate in plain English.
 
@@ -118,7 +118,7 @@ across all cities. Colour the bars. Add a title and axis labels. Use seaborn.
 Copy the code into a notebook cell and run it. Then ask Copilot to improve it:
 
 ```
-Make the x-axis label easier to read, add a subtitle saying 'Based on Airbnb data —
+Make the x-axis label easier to read, add a subtitle saying 'Based on Airbnb data -
 2,000 listings per city', and make the bars slightly thinner.
 ```
 
@@ -129,30 +129,30 @@ Based on this bar chart, write a two-sentence interpretation I could include in 
 management report. Audience is a business stakeholder who doesn't read code.
 ```
 
-> **Skill learned:** Describe what you want, not how to draw it. Iterate in plain English. Ask for the interpretation too — not just the chart.
+> **Skill learned:** Describe what you want, not how to draw it. Iterate in plain English. Ask for the interpretation too - not just the chart.
 
 ---
 
-### ⑤ Custom instructions — 3 minutes
+### ⑤ Custom instructions - 3 minutes
 
 **What:** Teach Copilot your project's conventions once. It applies them automatically.
 
 In the Chat panel:
 
 ```
-#copilot-instructions.md — read this file and summarise in 3 bullets what Copilot
+#copilot-instructions.md - read this file and summarise in 3 bullets what Copilot
 should know about this project.
 ```
 
 Notice that the file already tells Copilot to use DuckDB syntax, to query `df` directly, and to follow the charting conventions. That's why Copilot wrote `duckdb.query(...)` in step ③ without you asking.
 
-Then open `.github/copilot-instructions.md` in VS Code and look at it. You can edit this file for your own team — add your SQL dialect, your table names, your output style. Every Copilot session in this folder will pick it up.
+Then open `.github/copilot-instructions.md` in VS Code and look at it. You can edit this file for your own team - add your SQL dialect, your table names, your output style. Every Copilot session in this folder will pick it up.
 
 > **Skill learned:** `.github/copilot-instructions.md` is the file that gives Copilot persistent project context. Commit it to your repo and the whole team gets consistent Copilot behaviour.
 
 ---
 
-## After the session — self-study
+## After the session - self-study
 
 The full chapters are available for self-paced learning:
 
@@ -167,7 +167,7 @@ The full chapters are available for self-paced learning:
 
 ---
 
-## Quick reference — prompting patterns
+## Quick reference - prompting patterns
 
 These patterns work across all five skills above. Copy and adapt them.
 
@@ -215,7 +215,7 @@ That's a good start. Now make it: [more specific change]. Keep everything else t
 | `#file` context in Chat | ✅ Available |
 | Agent mode in VS Code Chat | ✅ Available |
 | `.github/copilot-instructions.md` | ✅ Available |
-| GitHub Copilot CLI (`gh copilot`) | ❌ Not available — currently in public preview, blocked by Sky GitHub Enterprise policy |
+| GitHub Copilot CLI (`gh copilot`) | ❌ Not available - currently in public preview, blocked by Sky GitHub Enterprise policy |
 | MCP servers | ❌ Not available in our environment |
 
 Any reference to the Copilot CLI or MCP in the chapter READMEs can be ignored for this workshop.

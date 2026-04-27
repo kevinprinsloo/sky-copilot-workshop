@@ -2,11 +2,11 @@
 
 > **Workshop exercise for econometrics and analytics teams.**
 > Use GitHub Copilot's Chat panel, Agent mode, and Plan mode to build a
-> Python analysis pipeline — step by step — without writing code from scratch.
+> Python analysis pipeline - step by step - without writing code from scratch.
 
 This guide walks you through using Copilot to create a script similar to
 [`airbnb_analysis_pipeline.py`](./airbnb_analysis_pipeline.py). That file is
-the "finished product" — a reference you can compare against as you build
+the "finished product" - a reference you can compare against as you build
 your own version.
 
 ---
@@ -26,19 +26,19 @@ your own version.
 
 Each section below gives you:
 
-1. **The goal** — what this part of the pipeline does, in plain English
-2. **A Copilot prompt** — copy it into the Chat panel (Agent mode recommended)
-3. **What to check** — how to verify the output is correct
-4. **Stretch prompts** — optional follow-ups to refine the result
+1. **The goal** - what this part of the pipeline does, in plain English
+2. **A Copilot prompt** - copy it into the Chat panel (Agent mode recommended)
+3. **What to check** - how to verify the output is correct
+4. **Stretch prompts** - optional follow-ups to refine the result
 
 > **Tip:** Switch Copilot to **Agent mode** (dropdown at the top of Chat) so
 > it can create and edit files directly. If you want to plan first before
-> generating code, try **Plan mode** — Copilot will outline its approach and
+> generating code, try **Plan mode** - Copilot will outline its approach and
 > ask for your approval before making changes.
 
 ---
 
-## Step 0 — Plan the pipeline
+## Step 0 - Plan the pipeline
 
 Before writing any code, ask Copilot to help you plan.
 
@@ -72,7 +72,7 @@ Go ahead and implement the plan. Create the file samples/my_analysis_pipeline.py
 
 ---
 
-## Step 1 — Download and combine data
+## Step 1 - Download and combine data
 
 If you prefer to build the script piece by piece, start with the data
 download function.
@@ -109,7 +109,7 @@ one or two cities, e.g.: python samples/my_analysis_pipeline.py --cities London 
 
 ---
 
-## Step 2 — Clean and enrich the data
+## Step 2 - Clean and enrich the data
 
 **Copilot prompt:**
 
@@ -134,7 +134,7 @@ Call this function in main() after downloading the data.
 
 ---
 
-## Step 3 — Data overview
+## Step 3 - Data overview
 
 **Copilot prompt:**
 
@@ -150,7 +150,7 @@ Add a function called print_data_overview(df) that prints:
 
 ---
 
-## Step 4 — SQL analysis with DuckDB
+## Step 4 - SQL analysis with DuckDB
 
 This step is especially relevant for analysts who already know SQL.
 
@@ -183,18 +183,18 @@ AND above-average availability for their city. Count them per city.
 
 ---
 
-## Step 5 — Charts and visualisations
+## Step 5 - Charts and visualisations
 
 **Copilot prompt:**
 
 ```
 Add chart functions to my pipeline that save PNG files to an output directory:
 
-1. plot_overview_charts(df, output_dir) — bar charts of listings per city
+1. plot_overview_charts(df, output_dir) - bar charts of listings per city
    and room type distribution (side by side, figsize 15x5)
-2. plot_price_charts(df, output_dir) — box plots of price by city and
+2. plot_price_charts(df, output_dir) - box plots of price by city and
    price by room type + city (skip if no price data)
-3. plot_reviews_availability(df, output_dir) — median reviews bar chart
+3. plot_reviews_availability(df, output_dir) - median reviews bar chart
    and availability KDE distribution
 
 Use seaborn with whitegrid style and muted palette.
@@ -216,21 +216,21 @@ stacked bar chart. Save it as an HTML file in the output directory.
 
 ---
 
-## Step 6 — Summary functions and export
+## Step 6 - Summary functions and export
 
 **Copilot prompt:**
 
 ```
 Add these functions:
 
-1. city_summary(df, city) — returns a dictionary with total listings,
+1. city_summary(df, city) - returns a dictionary with total listings,
    top room type, median availability, median reviews, top neighbourhood,
    and median price (if available). Add type hints and a docstring.
 
-2. build_summary_table(df) — aggregates key metrics for every city into
+2. build_summary_table(df) - aggregates key metrics for every city into
    a single DataFrame.
 
-3. export_results(df, sql_results, summary, output_dir) — saves the
+3. export_results(df, sql_results, summary, output_dir) - saves the
    cleaned dataset, summary table, and all SQL results to CSV files.
 
 Wire them all into the main pipeline.
@@ -243,7 +243,7 @@ Wire them all into the main pipeline.
 
 ---
 
-## Step 7 — Run the full pipeline
+## Step 7 - Run the full pipeline
 
 ```bash
 python samples/my_analysis_pipeline.py
@@ -258,14 +258,14 @@ python samples/my_analysis_pipeline.py --cities London Amsterdam --output-dir te
 Compare your output against the reference file:
 
 ```
-Look at #airbnb_analysis_pipeline.py — compare it with my version in
+Look at #airbnb_analysis_pipeline.py - compare it with my version in
 #my_analysis_pipeline.py. What differences are there? Are there any
 improvements I should make?
 ```
 
 ---
 
-## Going further — automation with custom instructions
+## Going further - automation with custom instructions
 
 Once your pipeline works, you can teach Copilot to run it automatically in
 future sessions. There are three approaches available at Sky:
@@ -278,7 +278,7 @@ Copilot in every chat session. You can add pipeline-specific conventions:
 ```
 Ask Copilot:
 
-Read #.github/copilot-instructions.md — add a section about the analysis
+Read #.github/copilot-instructions.md - add a section about the analysis
 pipeline script at samples/airbnb_analysis_pipeline.py. Include the
 command to run it, the expected outputs, and any conventions about the
 output directory structure.
@@ -317,7 +317,7 @@ Read #.github/skills/duckdb-query/SKILL.md for an example of the format.
 Then in future sessions, reference it:
 
 ```
-#.github/skills/analysis-pipeline/SKILL.md — Run the analysis pipeline
+#.github/skills/analysis-pipeline/SKILL.md - Run the analysis pipeline
 for London and Paris only, and add a correlation heatmap to the charts.
 ```
 

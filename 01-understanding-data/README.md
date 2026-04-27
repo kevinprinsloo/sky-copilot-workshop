@@ -1,14 +1,14 @@
-![Data Analysis with GitHub Copilot — Sky Workshop](../images/Picture%201.png)
+![Data Analysis with GitHub Copilot - Sky Workshop](../images/Picture%201.png)
 
-# Chapter 01 — Understanding Your Data 🔍
+# Chapter 01 - Understanding Your Data 🔍
 
-> **Watch Copilot explain a dataset, identify data quality problems, and tell you which columns actually matter — in seconds.**
+> **Watch Copilot explain a dataset, identify data quality problems, and tell you which columns actually matter - in seconds.**
 
 The first step in any analysis is understanding what you're working with: how many rows, what columns mean, where the gaps are. Copilot can short-circuit this step dramatically. Instead of reading documentation or manually profiling each column, you describe the data and ask.
 
 > ⚠️ **Prerequisites:** Complete [Chapter 00](../00-quick-start/README.md) first. Have `samples/air-bnb-workshop.ipynb` open in VS Code.
 
-> ❌ **Sky environment note:** This chapter includes optional "Copilot CLI" examples. **Ignore those sections** — the CLI is not available in our GitHub Enterprise environment. All core exercises use VS Code Chat only.
+> ❌ **Sky environment note:** This chapter includes optional "Copilot CLI" examples. **Ignore those sections** - the CLI is not available in our GitHub Enterprise environment. All core exercises use VS Code Chat only.
 
 ## 🎯 Learning Objectives
 
@@ -41,7 +41,7 @@ Open Copilot Chat (`Cmd+Option+I` / `Ctrl+Alt+I`) and try this:
 
 > *"I'm working with an Airbnb listings dataset that has these columns: id, name, host_id, neighbourhood, room_type, price, minimum_nights, number_of_reviews, reviews_per_month, availability_365, city. Explain what each column likely represents and which ones would be most useful for understanding what drives listing prices."*
 
-**What happens:** Copilot gives you a column-by-column breakdown in plain English — including which are likely most correlated with price, and which are probably less useful. A junior analyst would take 20 minutes to write the same thing.
+**What happens:** Copilot gives you a column-by-column breakdown in plain English - including which are likely most correlated with price, and which are probably less useful. A junior analyst would take 20 minutes to write the same thing.
 
 ---
 
@@ -56,7 +56,7 @@ copilot
 
 ### Demo 2: Explain a specific output
 
-Run the dataset overview cell in the notebook (cell under **Section 3 — Dataset Overview**). Then paste the output into Chat:
+Run the dataset overview cell in the notebook (cell under **Section 3 - Dataset Overview**). Then paste the output into Chat:
 
 **💬 VS Code Chat UI:**
 
@@ -82,9 +82,9 @@ Run the missing values cell (Section 4) and ask:
 
 You can give Copilot direct access to files, so it can answer questions based on the actual content rather than you having to paste things in.
 
-**💬 VS Code Chat UI** — drag the notebook into the Chat panel, or type `#` followed by the filename:
+**💬 VS Code Chat UI** - drag the notebook into the Chat panel, or type `#` followed by the filename:
 
-> *"#air-bnb-workshop.ipynb — look at the data loading section. What would happen if the download for one city fails? How would the code behave?"*
+> *"#air-bnb-workshop.ipynb - look at the data loading section. What would happen if the download for one city fails? How would the code behave?"*
 
 **🖥️ Copilot CLI:**
 
@@ -99,7 +99,7 @@ copilot
 
 ## 🔄 Interactive vs Agent Mode
 
-For the exercises above, you've been using **Chat mode** — Copilot answers your question but doesn't take action.
+For the exercises above, you've been using **Chat mode** - Copilot answers your question but doesn't take action.
 
 **Agent mode** can do more: it reads files, runs code, and edits notebooks. Try switching to Agent mode (dropdown at the top of the Chat panel → **Agent**) and ask:
 
@@ -118,21 +118,21 @@ copilot
 
 ## ▶️ Your Turn
 
-### Exercise 1 — Column decoder
+### Exercise 1 - Column decoder
 
 Run the notebook up to and including the overview cell, then ask Copilot:
 
 > 💬 *"Looking at this Airbnb dataset, which column would be the best proxy for how popular a listing is, given that we don't have booking data? Explain your reasoning."*
 
-There's no single right answer — the interesting part is Copilot's reasoning.
+There's no single right answer - the interesting part is Copilot's reasoning.
 
-### Exercise 2 — Data quality report
+### Exercise 2 - Data quality report
 
 Run the missing values cell, then ask Copilot to write a short data quality summary:
 
 > 💬 *"Based on this missing values output, write a 3-bullet data quality summary I could include in a report. Audience is a finance manager who needs to decide whether to trust a price analysis based on this data."*
 
-### Exercise 3 — Explain someone else's code
+### Exercise 3 - Explain someone else's code
 
 Select the data loading code block in the notebook, right-click, and choose **Copilot: Explain**. 
 
@@ -148,7 +148,7 @@ The examples above focused on understanding the Airbnb dataset. Now apply the sa
 
 Imagine you've just received a new CSV file from a colleague containing monthly sales data. You don't have any documentation.
 
-1. Ask Copilot to write Python code that produces a "first look" summary of an unknown DataFrame — shape, column names, data types, missing value counts, and numeric summary stats — all in one output.
+1. Ask Copilot to write Python code that produces a "first look" summary of an unknown DataFrame - shape, column names, data types, missing value counts, and numeric summary stats - all in one output.
 2. Ask Copilot to explain what each part of the code does, as if explaining to someone who has never written Python.
 3. Ask Copilot what questions you should always ask when you first see a new dataset.
 
@@ -174,9 +174,9 @@ Be more specific. Instead of "explain this data", try "explain what the `availab
 
 ## 🔑 Key Takeaways
 
-1. **Describe, don't paste** — for quick questions, describe what you're working with. For specific code questions, use `#file` or `@file`.
-2. **Ask for reasoning** — Copilot's value isn't just the answer, it's the explanation. Ask "why?" and "what would you investigate first?"
-3. **Agent mode goes further** — it can read files and chain multiple steps together without you manually copying outputs between cells
+1. **Describe, don't paste** - for quick questions, describe what you're working with. For specific code questions, use `#file` or `@file`.
+2. **Ask for reasoning** - Copilot's value isn't just the answer, it's the explanation. Ask "why?" and "what would you investigate first?"
+3. **Agent mode goes further** - it can read files and chain multiple steps together without you manually copying outputs between cells
 
 ---
 

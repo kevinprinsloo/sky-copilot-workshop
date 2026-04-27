@@ -1,4 +1,4 @@
-# Sky Copilot Workshop — Project Instructions
+# Sky Copilot Workshop - Project Instructions
 
 This file is read automatically by GitHub Copilot (and other AI tools) whenever you work in this project.
 It gives Copilot the context it needs to give better answers without you having to explain everything each time.
@@ -10,17 +10,17 @@ It gives Copilot the context it needs to give better answers without you having 
 This is a Python data analysis workshop using Airbnb listing data for five cities:
 **New York, London, Paris, Amsterdam, and Barcelona**.
 
-The audience is finance and analytics professionals — not software developers. Explanations should be
+The audience is finance and analytics professionals - not software developers. Explanations should be
 clear and practical, using business language rather than engineering jargon where possible.
 
 The data is stored in a pandas DataFrame named `df`, already loaded in `samples/air-bnb-workshop.ipynb`.
 
 ---
 
-## SQL — always use DuckDB
+## SQL - always use DuckDB
 
 - **Always write SQL using DuckDB syntax**, not SQLite, PostgreSQL, or generic SQL
-- DataFrames are queried directly by variable name — no loading step needed:
+- DataFrames are queried directly by variable name - no loading step needed:
 
 ```python
 import duckdb
@@ -32,7 +32,7 @@ duckdb.query("SELECT city, COUNT(*) FROM df GROUP BY city").df()
 
 ---
 
-## DataFrame schema — `df`
+## DataFrame schema - `df`
 
 | Column | Type | Description |
 |---|---|---|
