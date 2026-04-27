@@ -1,0 +1,16 @@
+city,rental_category,listings,avg_reviews,avg_availability
+Amsterdam,Short-term,1881,48.0,90.0
+Amsterdam,Weekly+,100,10.8,106.0
+Amsterdam,Long-term (30+ nights),19,16.7,209.0
+Barcelona,Short-term,1101,86.9,205.0
+Barcelona,Long-term (30+ nights),849,10.6,217.0
+Barcelona,Weekly+,50,30.1,193.0
+London,Short-term,1754,23.6,142.0
+London,Weekly+,194,9.3,148.0
+London,Long-term (30+ nights),52,8.0,166.0
+New York,Long-term (30+ nights),1704,18.4,160.0
+New York,Short-term,292,78.3,188.0
+New York,Weekly+,2,83.0,332.0
+Paris,Short-term,1520,31.8,128.0
+Paris,Long-term (30+ nights),402,7.6,114.0
+Paris,Weekly+,78,17.6,137.0

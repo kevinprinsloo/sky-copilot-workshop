@@ -1,0 +1,16 @@
+city,neighbourhood,listings,avg_reviews,avg_availability_days
+New York,Canarsie,8,181.1,259.0
+Barcelona,la Bordeta,9,111.9,279.0
+Amsterdam,Centrum-West,232,104.3,111.0
+New York,East Elmhurst,9,97.7,288.0
+New York,Park Slope,9,92.1,105.0
+New York,Tribeca,7,91.1,213.0
+Barcelona,la Vila Olímpica del Poblenou,16,90.8,217.0
+New York,Prospect Heights,14,88.0,85.0
+Barcelona,la Dreta de l'Eixample,260,85.8,236.0
+Barcelona,el Baix Guinardó,20,85.5,177.0
+Barcelona,la Salut,9,84.7,199.0
+Barcelona,la Sagrada Família,107,81.1,193.0
+Barcelona,Sant Antoni,98,78.2,223.0
+Amsterdam,Gaasperdam - Driemond,14,75.6,114.0
+Barcelona,Hostafrancs,16,75.5,207.0

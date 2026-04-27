@@ -1,0 +1,21 @@
+city,room_type,listings,pct_of_city
+Amsterdam,Entire home/apt,1651,82.6
+Amsterdam,Private room,328,16.4
+Amsterdam,Hotel room,15,0.8
+Amsterdam,Shared room,6,0.3
+Barcelona,Entire home/apt,1269,63.5
+Barcelona,Private room,703,35.2
+Barcelona,Shared room,14,0.7
+Barcelona,Hotel room,14,0.7
+London,Entire home/apt,1292,64.6
+London,Private room,701,35.1
+London,Shared room,5,0.3
+London,Hotel room,2,0.1
+New York,Entire home/apt,1043,52.2
+New York,Private room,919,46.0
+New York,Shared room,19,1.0
+New York,Hotel room,19,1.0
+Paris,Entire home/apt,1779,89.0
+Paris,Private room,203,10.2
+Paris,Hotel room,17,0.9
+Paris,Shared room,1,0.1

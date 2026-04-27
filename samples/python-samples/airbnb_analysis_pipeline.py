@@ -475,11 +475,8 @@ def city_summary(df: pd.DataFrame, city: str) -> dict[str, Any]:
         else "neighbourhood"
     )
     top_room = subset["room_type"].value_counts().idxmax()
-    top_nbh = (
-        subset[nbh_col].value_counts().idxmax()
-        if nbh_col in subset.columns
-        else "N/A"
-    )
+    nbh_counts = subset[nbh_col].value_counts() if nbh_col in subset.columns else pd.Series(dtype=str)
+    top_nbh = nbh_counts.idxmax() if not nbh_counts.empty else "N/A"
 
     result: dict[str, Any] = {
         "city": city,
