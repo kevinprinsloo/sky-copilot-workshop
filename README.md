@@ -1,10 +1,10 @@
-![Data Analysis with GitHub Copilot — Sky Workshop](./images/Picture%201.png)
+![Data Analysis with GitHub Copilot - Sky Workshop](./images/Picture%201.png)
 
 # 📊 Data Analysis with GitHub Copilot - Sky Workshop
 
 > **Learn how GitHub Copilot can help you do more advanced analytical work without needing deep software engineering skills.**
 
-This hands-on workshop is designed for **finance and analytics teams** who work with data every day. You'll work with a real dataset throughout all chapters, using Copilot to explore, clean, analyse, and explain data — all from VS Code.
+This hands-on workshop is designed for **finance and analytics teams** who work with data every day. You'll work with a real dataset throughout all chapters, using Copilot to explore, clean, analyse, and explain data - all from VS Code.
 
 ---
 
@@ -12,13 +12,13 @@ This hands-on workshop is designed for **finance and analytics teams** who work 
 
 **Start here if you're in the live session.** The full agenda with copy-paste prompts is in:
 
-> **[WORKSHOP-AGENDA.md](./WORKSHOP-AGENDA.md) — the 20-minute session guide**
+> **[WORKSHOP-AGENDA.md](./WORKSHOP-AGENDA.md) - the 20-minute session guide**
 
 The chapter folders below contain the full reference material for self-study after the session.
 
 ---
 
-## 🚦 Sky environment — what's available
+## 🚦 Sky environment - what's available
 
 This workshop uses **GitHub Copilot in VS Code only**. Some features described in GitHub Copilot documentation are not yet available in our GitHub Enterprise environment:
 
@@ -31,36 +31,36 @@ This workshop uses **GitHub Copilot in VS Code only**. Some features described i
 | `#file` context in Chat | ✅ |
 | Agent mode in VS Code Chat | ✅ |
 | `.github/copilot-instructions.md` | ✅ |
-| GitHub Copilot CLI (`gh copilot`) | ❌ Currently in public preview — blocked by Sky GitHub Enterprise policy |
+| GitHub Copilot CLI (`gh copilot`) | ❌ Currently in public preview - blocked by Sky GitHub Enterprise policy |
 | MCP servers | ❌ Not available in our environment |
 
 > Any "Copilot CLI" sections in the chapter READMEs are marked optional and can be skipped entirely.
 
 ---
 
-## 🔄 Automating with Copilot — what's possible today
+## 🔄 Automating with Copilot - what's possible today
 
 Beyond one-off chat prompts, Copilot supports several mechanisms for **teaching it your team's conventions and automating repetitive work**. Understanding these is key to getting long-term value from Copilot in an analytics workflow.
 
 | Approach | What it does | How to use it | Available at Sky |
 |---|---|---|---|
-| **`.github/copilot-instructions.md`** | Project-wide context that Copilot reads automatically in every chat session. Set your SQL dialect, data schema, charting conventions, and coding standards once — Copilot applies them without you repeating yourself. | Create the file and commit it to your repo. The whole team benefits immediately. | ✅ Yes |
-| **`AGENTS.md`** | A broader project context file in the repo root. Describes the data, tools, and conventions for any AI assistant. Copilot in VS Code does not read it automatically — reference it with `#AGENTS.md` in Chat. | Create in the repo root. Reference manually when needed. | ✅ Yes (manual reference) |
-| **Skill files (`.github/skills/*/SKILL.md`)** | Task-specific instruction documents. Think of them as "recipe cards" for recurring tasks — e.g., running a pipeline, writing a DuckDB query, adding a chart. Reference them in Chat and Copilot follows the instructions. | Create under `.github/skills/<task-name>/SKILL.md`. Reference with `#` in Chat. | ✅ Yes (manual reference) |
+| **`.github/copilot-instructions.md`** | Project-wide context that Copilot reads automatically in every chat session. Set your SQL dialect, data schema, charting conventions, and coding standards once - Copilot applies them without you repeating yourself. | Create the file and commit it to your repo. The whole team benefits immediately. | ✅ Yes |
+| **`AGENTS.md`** | A broader project context file in the repo root. Describes the data, tools, and conventions for any AI assistant. Copilot in VS Code does not read it automatically - reference it with `#AGENTS.md` in Chat. | Create in the repo root. Reference manually when needed. | ✅ Yes (manual reference) |
+| **Skill files (`.github/skills/*/SKILL.md`)** | Task-specific instruction documents. Think of them as "recipe cards" for recurring tasks - e.g., running a pipeline, writing a DuckDB query, adding a chart. Reference them in Chat and Copilot follows the instructions. | Create under `.github/skills/<task-name>/SKILL.md`. Reference with `#` in Chat. | ✅ Yes (manual reference) |
 | **Custom agents (`.github/agents/*.agent.md`)** | Specialised personas with defined tool access and behaviour. For example, an "Analyst" agent that always uses DuckDB and follows your charting conventions. | Create `.agent.md` files. Select the agent from the Chat dropdown. | ✅ Requires VS Code 1.106+ |
-| **Copilot CLI (`gh copilot`)** | Shell-level Copilot access — ask questions and generate commands from the terminal. Would enable pipeline automation from the command line. | `gh copilot suggest` / `gh copilot explain` | ❌ Public preview — blocked by policy |
+| **Copilot CLI (`gh copilot`)** | Shell-level Copilot access - ask questions and generate commands from the terminal. Would enable pipeline automation from the command line. | `gh copilot suggest` / `gh copilot explain` | ❌ Public preview - blocked by policy |
 | **MCP servers** | Connect Copilot to external tools (databases, APIs, services) via the Model Context Protocol. Would enable live data queries from Chat. | Configure in VS Code settings or `.agent.md` files. | ❌ Not available |
 
-### Practical example — the analysis pipeline skill
+### Practical example - the analysis pipeline skill
 
 This repo includes a skill file at [`.github/skills/analysis-pipeline/SKILL.md`](./.github/skills/analysis-pipeline/SKILL.md) and a reference Python script at [`samples/airbnb_analysis_pipeline.py`](./samples/airbnb_analysis_pipeline.py). In a future Copilot session, an analyst can reference the skill and ask Copilot to run, modify, or extend the pipeline:
 
 ```
-#.github/skills/analysis-pipeline/SKILL.md — Run the analysis pipeline
+#.github/skills/analysis-pipeline/SKILL.md - Run the analysis pipeline
 for London and Paris only, and add a correlation heatmap to the charts.
 ```
 
-The accompanying guide at [`samples/PIPELINE-README.md`](./samples/PIPELINE-README.md) walks through building this pipeline from scratch using Copilot's Plan and Agent modes — a step-by-step exercise designed for analysts who are new to Python.
+The accompanying guide at [`samples/PIPELINE-README.md`](./samples/PIPELINE-README.md) walks through building this pipeline from scratch using Copilot's Plan and Agent modes - a step-by-step exercise designed for analysts who are new to Python.
 
 ---
 
@@ -72,7 +72,7 @@ The accompanying guide at [`samples/PIPELINE-README.md`](./samples/PIPELINE-READ
 | 01 | 🔍 [Understanding Your Data](./01-understanding-data/README.md) | Load a dataset and explore it with Copilot's help |
 | 02 | 🧹 [Cleaning & Preparing](./02-cleaning-preparing/README.md) | Spot and fix data quality issues faster |
 | 03 | 📊 [Explore & Visualise](./03-explore-visualise/README.md) | Generate charts from plain-English descriptions |
-| 04 | 🗄️ [SQL with DuckDB](./04-sql-with-duckdb/README.md) | Run SQL directly on your data — no database needed |
+| 04 | 🗄️ [SQL with DuckDB](./04-sql-with-duckdb/README.md) | Run SQL directly on your data - no database needed |
 | 05 | 🤖 [Custom Instructions](./05-custom-instructions-agents/README.md) | Teach Copilot your tools, data, and team standards |
 | 06 | 🎯 [Putting It All Together](./06-putting-it-together/README.md) | Build a reusable analysis pipeline end-to-end |
 
@@ -82,11 +82,11 @@ The accompanying guide at [`samples/PIPELINE-README.md`](./samples/PIPELINE-READ
 
 Each chapter follows the same pattern:
 
-1. **Real-World Analogy** — understand the concept through a familiar comparison
-2. **Core Concepts** — the essential knowledge, kept brief
-3. **Hands-On Demos** — prompts to try immediately, with expected outputs
-4. **Your Turn** — a challenge to try yourself
-5. **What's Next** — preview of the next chapter
+1. **Real-World Analogy** - understand the concept through a familiar comparison
+2. **Core Concepts** - the essential knowledge, kept brief
+3. **Hands-On Demos** - prompts to try immediately, with expected outputs
+4. **Your Turn** - a challenge to try yourself
+5. **What's Next** - preview of the next chapter
 
 **All prompts are ready to copy.** Every Copilot prompt in this workshop can be pasted directly into the Chat panel.
 
@@ -94,9 +94,9 @@ Each chapter follows the same pattern:
 
 ## 🗂️ The Dataset
 
-Throughout this workshop we use real **Airbnb listings data** from [Inside Airbnb](http://insideairbnb.com/) — 2,000 listings per city across New York, London, Paris, Amsterdam, and Barcelona.
+Throughout this workshop we use real **Airbnb listings data** from [Inside Airbnb](http://insideairbnb.com/) - 2,000 listings per city across New York, London, Paris, Amsterdam, and Barcelona.
 
-This is the kind of tabular data you'd recognise from your own work: rows and columns, missing values, price outliers, categorical fields like room type and neighbourhood. The analysis tasks — summarising, cleaning, segmenting, visualising — map directly to things analytics and finance teams do every day.
+This is the kind of tabular data you'd recognise from your own work: rows and columns, missing values, price outliers, categorical fields like room type and neighbourhood. The analysis tasks - summarising, cleaning, segmenting, visualising - map directly to things analytics and finance teams do every day.
 
 The data lives in `samples/air-bnb-workshop.ipynb`. You'll load and work with it throughout the workshop.
 
@@ -116,7 +116,7 @@ The data lives in `samples/air-bnb-workshop.ipynb`. You'll load and work with it
 
 ---
 
-## 🧭 How to Use GitHub Copilot — Modes & Features
+## 🧭 How to Use GitHub Copilot - Modes & Features
 
 GitHub Copilot in VS Code offers several distinct ways to interact. Each is suited to different tasks. This section explains what they are, when to use them, and how to switch between them.
 
@@ -128,7 +128,7 @@ The Copilot Chat panel (`Cmd+Option+I` / `Ctrl+Alt+I`) has a **mode dropdown** a
 
 | | |
 |---|---|
-| **What it does** | A read-only conversational mode. Copilot answers questions, explains code, and suggests approaches — but does **not** modify any files. |
+| **What it does** | A read-only conversational mode. Copilot answers questions, explains code, and suggests approaches - but does **not** modify any files. |
 | **When to use it** | When you want to understand something before changing it. Great for exploring unfamiliar code, asking "what does this do?", or getting a second opinion on an approach. |
 | **How to activate** | Select **Ask** from the mode dropdown at the top of the Chat panel. |
 
@@ -139,15 +139,15 @@ What does the groupby().agg() chain do in this cell?
 ```
 
 ```
-#air-bnb-workshop.ipynb — explain the data cleaning steps and why they matter.
+#air-bnb-workshop.ipynb - explain the data cleaning steps and why they matter.
 ```
 
 #### Edit Mode
 
 | | |
 |---|---|
-| **What it does** | Copilot suggests edits directly to files you have open. It shows proposed changes as diffs that you can accept or reject — one file at a time. |
-| **When to use it** | When you have a specific, focused change in mind — fixing a bug, refactoring a function, or updating a single file. |
+| **What it does** | Copilot suggests edits directly to files you have open. It shows proposed changes as diffs that you can accept or reject - one file at a time. |
+| **When to use it** | When you have a specific, focused change in mind - fixing a bug, refactoring a function, or updating a single file. |
 | **How to activate** | Select **Edit** from the mode dropdown. You can also select code in the editor, press `Cmd+I` (Mac) / `Ctrl+I` (Windows), and type your instruction for an inline edit. |
 
 **Example prompts:**
@@ -164,7 +164,7 @@ Add error handling to the data download function.
 
 | | |
 |---|---|
-| **What it does** | The most autonomous mode. Copilot can read and write files, run terminal commands, install packages, and iterate on errors — all within a single conversation. It plans a sequence of steps and executes them. |
+| **What it does** | The most autonomous mode. Copilot can read and write files, run terminal commands, install packages, and iterate on errors - all within a single conversation. It plans a sequence of steps and executes them. |
 | **When to use it** | When the task spans multiple files or requires running code. Building a new script, setting up a project, or debugging across several files. This is your go-to for "just do it" tasks. |
 | **How to activate** | Select **Agent** from the mode dropdown. Agent mode is the default in newer versions of VS Code. |
 
@@ -187,7 +187,7 @@ The chart in cell 5 is throwing a KeyError. Debug it, fix the code, and re-run.
 |---|---|
 | **What it does** | Before executing, Copilot outlines a step-by-step plan of what it intends to do. You review and approve the plan before any changes are made. Think of it as Agent mode with a safety net. |
 | **When to use it** | When the task is large or unfamiliar and you want to review the approach before Copilot starts editing. Useful for multi-file refactors, new features, or anything where you want to stay in control. |
-| **How to activate** | In Agent mode, ask Copilot to plan first — e.g. "Plan how you would…". You can also hold `Cmd+Shift+Enter` (Mac) / `Ctrl+Shift+Enter` (Windows) when sending a message to request a plan before execution. |
+| **How to activate** | In Agent mode, ask Copilot to plan first - e.g. "Plan how you would…". You can also hold `Cmd+Shift+Enter` (Mac) / `Ctrl+Shift+Enter` (Windows) when sending a message to request a plan before execution. |
 
 **Example prompts:**
 
@@ -203,11 +203,11 @@ Python module.
 
 ### Inline Features (No Chat Panel Required)
 
-These features work directly in the editor — no need to open the Chat panel.
+These features work directly in the editor - no need to open the Chat panel.
 
 #### Ghost Text (Inline Completions)
 
-As you type — or after writing a comment — Copilot suggests code in grey "ghost text". This is the fastest way to write code with Copilot.
+As you type - or after writing a comment - Copilot suggests code in grey "ghost text". This is the fastest way to write code with Copilot.
 
 | Action | Shortcut |
 |---|---|
@@ -223,7 +223,7 @@ As you type — or after writing a comment — Copilot suggests code in grey "gh
 
 Select code in the editor and press `Cmd+I` (Mac) / `Ctrl+I` (Windows) to open an inline prompt. Type your instruction and Copilot will edit the selected code in place, showing a diff you can accept or dismiss.
 
-**Good for:** quick fixes, renaming, reformatting, adding error handling, or converting between styles — without leaving the editor.
+**Good for:** quick fixes, renaming, reformatting, adding error handling, or converting between styles - without leaving the editor.
 
 #### Right-Click Context Menu
 
@@ -236,7 +236,7 @@ Select any code, right-click, and choose from the **Copilot** submenu:
 | **Copilot: Generate Docs** | Adds a docstring or comment block to the selected function |
 | **Copilot: Generate Tests** | Creates test cases for the selected code |
 
-### Quick Comparison — Which Mode Should I Use?
+### Quick Comparison - Which Mode Should I Use?
 
 | Situation | Recommended Mode |
 |---|---|
@@ -249,7 +249,7 @@ Select any code, right-click, and choose from the **Copilot** submenu:
 
 ---
 
-## 📋 Quick Reference — VS Code Chat UI
+## 📋 Quick Reference - VS Code Chat UI
 
 | Action | How |
 |---|---|
@@ -258,7 +258,7 @@ Select any code, right-click, and choose from the **Copilot** submenu:
 | Switch to Agent mode | Click the dropdown at the top of Chat → **Agent** |
 | Explain selected code | Select code → right-click → **Copilot: Explain** |
 | Edit selected code | Select code → `Cmd+I` (Mac) / `Ctrl+I` (Windows) |
-| Inline suggestion | Start typing or write a comment — Copilot autocompletes; **Tab** to accept, **Escape** to reject, **Alt+]** to cycle |
+| Inline suggestion | Start typing or write a comment - Copilot autocompletes; **Tab** to accept, **Escape** to reject, **Alt+]** to cycle |
 
 ---
 
