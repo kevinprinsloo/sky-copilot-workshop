@@ -10,15 +10,15 @@ This hands-on workshop is designed for **finance and analytics teams** who work 
 
 ## 🚀 Main Workshop - Start Here
 
-**This is the primary workshop.** Work through the Jupyter notebook using the chapter guides to lead the way — they provide the prompts, context, and exercises for each section. No prior coding experience required.
+**This is the primary workshop.** Work through the Jupyter notebook using the chapter guides to lead the way - they provide the prompts, context, and exercises for each section. No prior coding experience required.
 
-**Step 1 — Set up your environment:**
+**Step 1 - Set up your environment:**
 
-> **[00-quick-start/README.md](./00-quick-start/README.md) — install VS Code, Copilot, and get the notebook running (~15 min)**
+> **[00-quick-start/README.md](./00-quick-start/README.md) - install VS Code, Copilot, and get the notebook running (~15 min)**
 
-**Step 2 — Open the notebook and follow the chapters in order:**
+**Step 2 - Open the notebook and follow the chapters in order:**
 
-> **[samples/air-bnb-workshop.ipynb](./samples/air-bnb-workshop.ipynb) — the main workshop notebook**
+> **[samples/air-bnb-workshop.ipynb](./samples/air-bnb-workshop.ipynb) - the main workshop notebook**
 
 Each chapter below has its own README that guides you through that section of the notebook with explanations and copy-paste prompts:
 
@@ -28,7 +28,7 @@ Each chapter below has its own README that guides you through that section of th
 | 01 | [Understanding Your Data](./01-understanding-data/README.md) | Load the dataset and explore it with Copilot |
 | 02 | [Cleaning & Preparing](./02-cleaning-preparing/README.md) | Spot and fix data quality issues |
 | 03 | [Explore & Visualise](./03-explore-visualise/README.md) | Generate charts from plain-English descriptions |
-| 04 | [SQL with DuckDB](./04-sql-with-duckdb/README.md) | Run SQL directly on your data — no database needed |
+| 04 | [SQL with DuckDB](./04-sql-with-duckdb/README.md) | Run SQL directly on your data - no database needed |
 | 05 | [Custom Instructions](./05-custom-instructions-agents/README.md) | Teach Copilot your tools, data, and team conventions |
 | 06 | [Putting It All Together](./06-putting-it-together/README.md) | Build a reusable analysis pipeline end-to-end |
 
