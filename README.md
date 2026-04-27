@@ -38,6 +38,32 @@ This workshop uses **GitHub Copilot in VS Code only**. Some features described i
 
 ---
 
+## 🔄 Automating with Copilot — what's possible today
+
+Beyond one-off chat prompts, Copilot supports several mechanisms for **teaching it your team's conventions and automating repetitive work**. Understanding these is key to getting long-term value from Copilot in an analytics workflow.
+
+| Approach | What it does | How to use it | Available at Sky |
+|---|---|---|---|
+| **`.github/copilot-instructions.md`** | Project-wide context that Copilot reads automatically in every chat session. Set your SQL dialect, data schema, charting conventions, and coding standards once — Copilot applies them without you repeating yourself. | Create the file and commit it to your repo. The whole team benefits immediately. | ✅ Yes |
+| **`AGENTS.md`** | A broader project context file in the repo root. Describes the data, tools, and conventions for any AI assistant. Copilot in VS Code does not read it automatically — reference it with `#AGENTS.md` in Chat. | Create in the repo root. Reference manually when needed. | ✅ Yes (manual reference) |
+| **Skill files (`.github/skills/*/SKILL.md`)** | Task-specific instruction documents. Think of them as "recipe cards" for recurring tasks — e.g., running a pipeline, writing a DuckDB query, adding a chart. Reference them in Chat and Copilot follows the instructions. | Create under `.github/skills/<task-name>/SKILL.md`. Reference with `#` in Chat. | ✅ Yes (manual reference) |
+| **Custom agents (`.github/agents/*.agent.md`)** | Specialised personas with defined tool access and behaviour. For example, an "Analyst" agent that always uses DuckDB and follows your charting conventions. | Create `.agent.md` files. Select the agent from the Chat dropdown. | ✅ Requires VS Code 1.106+ |
+| **Copilot CLI (`gh copilot`)** | Shell-level Copilot access — ask questions and generate commands from the terminal. Would enable pipeline automation from the command line. | `gh copilot suggest` / `gh copilot explain` | ❌ Public preview — blocked by policy |
+| **MCP servers** | Connect Copilot to external tools (databases, APIs, services) via the Model Context Protocol. Would enable live data queries from Chat. | Configure in VS Code settings or `.agent.md` files. | ❌ Not available |
+
+### Practical example — the analysis pipeline skill
+
+This repo includes a skill file at [`.github/skills/analysis-pipeline/SKILL.md`](./.github/skills/analysis-pipeline/SKILL.md) and a reference Python script at [`samples/airbnb_analysis_pipeline.py`](./samples/airbnb_analysis_pipeline.py). In a future Copilot session, an analyst can reference the skill and ask Copilot to run, modify, or extend the pipeline:
+
+```
+#.github/skills/analysis-pipeline/SKILL.md — Run the analysis pipeline
+for London and Paris only, and add a correlation heatmap to the charts.
+```
+
+The accompanying guide at [`samples/PIPELINE-README.md`](./samples/PIPELINE-README.md) walks through building this pipeline from scratch using Copilot's Plan and Agent modes — a step-by-step exercise designed for analysts who are new to Python.
+
+---
+
 ## 🎯 What You'll Learn
 
 | Chapter | Theme | What You'll Do |
