@@ -10,11 +10,27 @@ This hands-on workshop is designed for **finance and analytics teams** who work 
 
 ## 🚀 Main Workshop - Start Here
 
-**This is the primary workshop.** Open the Jupyter notebook and work through it with Copilot - asking questions, generating code, running SQL, and building charts. No prior coding experience required.
+**This is the primary workshop.** Work through the Jupyter notebook using the chapter guides to lead the way — they provide the prompts, context, and exercises for each section. No prior coding experience required.
 
-> **[samples/air-bnb-workshop.ipynb](./samples/air-bnb-workshop.ipynb) - open this notebook to start**
+**Step 1 — Set up your environment:**
 
-Use the chapter guides below alongside the notebook. They provide the prompts and context for each section.
+> **[00-quick-start/README.md](./00-quick-start/README.md) — install VS Code, Copilot, and get the notebook running (~15 min)**
+
+**Step 2 — Open the notebook and follow the chapters in order:**
+
+> **[samples/air-bnb-workshop.ipynb](./samples/air-bnb-workshop.ipynb) — the main workshop notebook**
+
+Each chapter below has its own README that guides you through that section of the notebook with explanations and copy-paste prompts:
+
+| Chapter | Guide | What you'll do |
+|:---:|---|---|
+| 00 | [Quick Start](./00-quick-start/README.md) | Install VS Code, Copilot, and verify everything is working |
+| 01 | [Understanding Your Data](./01-understanding-data/README.md) | Load the dataset and explore it with Copilot |
+| 02 | [Cleaning & Preparing](./02-cleaning-preparing/README.md) | Spot and fix data quality issues |
+| 03 | [Explore & Visualise](./03-explore-visualise/README.md) | Generate charts from plain-English descriptions |
+| 04 | [SQL with DuckDB](./04-sql-with-duckdb/README.md) | Run SQL directly on your data — no database needed |
+| 05 | [Custom Instructions](./05-custom-instructions-agents/README.md) | Teach Copilot your tools, data, and team conventions |
+| 06 | [Putting It All Together](./06-putting-it-together/README.md) | Build a reusable analysis pipeline end-to-end |
 
 ### Want to go further? Build the pipeline script
 
@@ -82,19 +98,6 @@ The accompanying guide at [`samples/python-samples/PIPELINE-README.md`](./sample
 
 ---
 
-## 🎯 What You'll Learn
-
-| Chapter | Theme | What You'll Do |
-|:-------:|-------|----------------|
-| 00 | 🚀 [Quick Start](./00-quick-start/README.md) | Set up VS Code, install Copilot, open the workshop |
-| 01 | 🔍 [Understanding Your Data](./01-understanding-data/README.md) | Load a dataset and explore it with Copilot's help |
-| 02 | 🧹 [Cleaning & Preparing](./02-cleaning-preparing/README.md) | Spot and fix data quality issues faster |
-| 03 | 📊 [Explore & Visualise](./03-explore-visualise/README.md) | Generate charts from plain-English descriptions |
-| 04 | 🗄️ [SQL with DuckDB](./04-sql-with-duckdb/README.md) | Run SQL directly on your data - no database needed |
-| 05 | 🤖 [Custom Instructions](./05-custom-instructions-agents/README.md) | Teach Copilot your tools, data, and team standards |
-| 06 | 🎯 [Putting It All Together](./06-putting-it-together/README.md) | Build a reusable analysis pipeline end-to-end |
-
----
 
 ## 📖 How This Workshop Works
 
