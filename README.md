@@ -1,6 +1,6 @@
 ![Data Analysis with GitHub Copilot — Sky Workshop](./images/Picture%201.png)
 
-# 📊 Data Analysis with GitHub Copilot — Sky Workshop
+# 📊 Data Analysis with GitHub Copilot - Sky Workshop
 
 > **Learn how GitHub Copilot can help you do more advanced analytical work without needing deep software engineering skills.**
 
