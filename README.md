@@ -8,9 +8,21 @@ This hands-on workshop is designed for **finance and analytics teams** who work 
 
 ---
 
-## ⚡ 20-Minute Workshop Path
+## 🚀 Main Workshop — Start Here
 
-**Start here if you're in the live session.** The full agenda with copy-paste prompts is in:
+**This is the primary workshop.** You'll use GitHub Copilot's Chat, Plan, and Agent modes to build a real Python analysis pipeline from scratch — no prior coding experience required.
+
+> **[samples/python-samples/PIPELINE-README.md](./samples/python-samples/PIPELINE-README.md) — the main workshop guide**
+
+The finished reference script is at [`samples/python-samples/airbnb_analysis_pipeline.py`](./samples/python-samples/airbnb_analysis_pipeline.py) — use it to compare your work as you go.
+
+**What you'll build:** a reusable script that loads Airbnb listings data for five cities, cleans it, runs SQL analysis with DuckDB, and generates charts — all guided by Copilot step by step.
+
+---
+
+## ⚡ 20-Minute Live Session Path
+
+**Joining a facilitated session?** Use this condensed agenda instead — it covers the key skills with copy-paste prompts and fits in 20 minutes.
 
 > **[WORKSHOP-AGENDA.md](./WORKSHOP-AGENDA.md) - the 20-minute session guide**
 
@@ -53,14 +65,14 @@ Beyond one-off chat prompts, Copilot supports several mechanisms for **teaching 
 
 ### Practical example - the analysis pipeline skill
 
-This repo includes a skill file at [`.github/skills/analysis-pipeline/SKILL.md`](./.github/skills/analysis-pipeline/SKILL.md) and a reference Python script at [`samples/airbnb_analysis_pipeline.py`](./samples/airbnb_analysis_pipeline.py). In a future Copilot session, an analyst can reference the skill and ask Copilot to run, modify, or extend the pipeline:
+This repo includes a skill file at [`.github/skills/analysis-pipeline/SKILL.md`](./.github/skills/analysis-pipeline/SKILL.md) and a reference Python script at [`samples/python-samples/airbnb_analysis_pipeline.py`](./samples/python-samples/airbnb_analysis_pipeline.py). In a future Copilot session, an analyst can reference the skill and ask Copilot to run, modify, or extend the pipeline:
 
 ```
 #.github/skills/analysis-pipeline/SKILL.md - Run the analysis pipeline
 for London and Paris only, and add a correlation heatmap to the charts.
 ```
 
-The accompanying guide at [`samples/PIPELINE-README.md`](./samples/PIPELINE-README.md) walks through building this pipeline from scratch using Copilot's Plan and Agent modes - a step-by-step exercise designed for analysts who are new to Python.
+The accompanying guide at [`samples/python-samples/PIPELINE-README.md`](./samples/python-samples/PIPELINE-README.md) walks through building this pipeline from scratch using Copilot's Plan and Agent modes - a step-by-step exercise designed for analysts who are new to Python.
 
 ---
 
