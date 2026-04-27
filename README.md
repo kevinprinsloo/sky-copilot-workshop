@@ -8,19 +8,19 @@ This hands-on workshop is designed for **finance and analytics teams** who work 
 
 ---
 
-## 🚀 Main Workshop — Start Here
+## 🚀 Main Workshop - Start Here
 
-**This is the primary workshop.** Open the Jupyter notebook and work through it with Copilot — asking questions, generating code, running SQL, and building charts. No prior coding experience required.
+**This is the primary workshop.** Open the Jupyter notebook and work through it with Copilot - asking questions, generating code, running SQL, and building charts. No prior coding experience required.
 
-> **[samples/air-bnb-workshop.ipynb](./samples/air-bnb-workshop.ipynb) — open this notebook to start**
+> **[samples/air-bnb-workshop.ipynb](./samples/air-bnb-workshop.ipynb) - open this notebook to start**
 
 Use the chapter guides below alongside the notebook. They provide the prompts and context for each section.
 
 ### Want to go further? Build the pipeline script
 
-Once you're comfortable with the notebook, the pipeline workshop takes you further — using Copilot's Plan and Agent modes to build a standalone reusable Python script from scratch.
+Once you're comfortable with the notebook, the pipeline workshop takes you further - using Copilot's Plan and Agent modes to build a standalone reusable Python script from scratch.
 
-> [samples/python-samples/PIPELINE-README.md](./samples/python-samples/PIPELINE-README.md) — the pipeline workshop guide
+> [samples/python-samples/PIPELINE-README.md](./samples/python-samples/PIPELINE-README.md) - the pipeline workshop guide
 
 The finished reference script is at [`samples/python-samples/airbnb_analysis_pipeline.py`](./samples/python-samples/airbnb_analysis_pipeline.py).
 
@@ -28,9 +28,9 @@ The finished reference script is at [`samples/python-samples/airbnb_analysis_pip
 
 ## ⚡ 20-Minute Live Session Path
 
-**Joining a facilitated session?** Use this condensed agenda instead — it covers the key skills with copy-paste prompts and fits in 20 minutes.
+**Joining a facilitated session?** Use this condensed agenda instead - it covers the key skills with copy-paste prompts and fits in 20 minutes.
 
-> **[WORKSHOP-AGENDA.md](./WORKSHOP-AGENDA.md) — the 20-minute session guide**
+> **[WORKSHOP-AGENDA.md](./WORKSHOP-AGENDA.md) - the 20-minute session guide**
 
 The chapter folders below contain the full reference material for self-study after the session.
 
